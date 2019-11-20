@@ -54,7 +54,54 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Styles\ChangeDisplayButton1Style.xaml">
+    <Compile Include="Sections\CalendarPage.xaml.cs">
+      <DependentUpon>CalendarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\ConcertsPage.xaml.cs">
+      <DependentUpon>ConcertsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\ExhibitionsPage.xaml.cs">
+      <DependentUpon>ExhibitionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\FilmsPage.cs" />
+    <Compile Include="Sections\FilmsPage.xaml.cs">
+      <DependentUpon>FilmsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\SearchPage.xaml.cs">
+      <DependentUpon>SearchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Sections\CalendarPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sections\ConcertsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sections\ExhibitionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sections\FilmsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sections\SearchPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sections\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\CalendarButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\CalendarStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -71,7 +118,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Styles\ChangeDisplayButton2Style.xaml">
+    <Page Include="Styles\AllPagesMenuButtons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -116,6 +163,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\MenuImage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\CalendarImage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\MenuImageDisable.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\CalendarImageDisable.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

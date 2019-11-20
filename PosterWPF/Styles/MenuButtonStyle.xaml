@@ -7,9 +7,10 @@
     <SolidColorBrush x:Key="Button.Disabled.Border" Color="White"/>
     <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="White"/>
     <ImageBrush x:Key="Button.Disabled.Background" ImageSource="/Image/MenuImage.jpg" />
-    <ImageBrush x:Key="Button.Pressed.Background" ImageSource="/Image/MenuImage.jpg" />
-    <ImageBrush x:Key="Button.MouseOver.Background" ImageSource="/Image/MenuImage.jpg" />
+    <ImageBrush x:Key="Button.Pressed.Background" ImageSource="/Image/MenuImageDisable.jpg" />
+    <ImageBrush x:Key="Button.MouseOver.Background" ImageSource="/Image/MenuImageDisable.jpg" />
     <ImageBrush x:Key="Button.Static.Background" ImageSource="/Image/MenuImage.jpg" />
+    
     <Style x:Key="MenuButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>

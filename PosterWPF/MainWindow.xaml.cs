@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PosterWPF.Sections;
 
 namespace PosterWPF
 {
@@ -20,13 +21,16 @@ namespace PosterWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
         }
 
-
-
+        private void Poster_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetGridChildren(MainBody, new FilmsPage());
+        }
 
         private void AnimationMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -42,27 +46,50 @@ namespace PosterWPF
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
+            RenameSection(sender as Button);
             MoveMenu(Menu.Margin.Left, -248);
+            SetGridChildren(MainBody, new SearchPage());
         }
 
         private void FilmsButton_Click(object sender, RoutedEventArgs e)
         {
+            RenameSection(sender as Button);
             MoveMenu(Menu.Margin.Left, -248);
+            SetGridChildren(MainBody, new FilmsPage());
         }
 
         private void ConcertsButton_Click(object sender, RoutedEventArgs e)
         {
+            RenameSection(sender as Button);
             MoveMenu(Menu.Margin.Left, -248);
+            SetGridChildren(MainBody, new ConcertsPage());
         }
 
         private void ExhibitionButton_Click(object sender, RoutedEventArgs e)
         {
+            RenameSection(sender as Button);
             MoveMenu(Menu.Margin.Left, -248);
+            SetGridChildren(MainBody, new ExhibitionsPage());
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
+            RenameSection(sender as Button);
             MoveMenu(Menu.Margin.Left, -248);
+            SetGridChildren(MainBody, new SettingsPage());
+        }
+
+        private void Calendar_Click(object sender, RoutedEventArgs e)
+        {
+            OpenCalendar.Visibility = Visibility.Visible;
+            CalendarPage calendarPage = new CalendarPage();
+            SetGridChildren(OpenCalendar, calendarPage);
+            OpenCalendar.MouseLeave += OpenCalendar_MouseLeave;
+        }
+
+        private void OpenCalendar_MouseLeave(object sender, MouseEventArgs e)
+        {
+            OpenCalendar.Visibility = Visibility.Hidden;
         }
     }
 }

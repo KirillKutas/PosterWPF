@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\App.xaml
-6-1225407233
+13-474480630
 
-61084383902
+13-1120857001
 131569487696
-Styles\ChangeDisplayButton1Style.xaml;MainWindow.xaml;Styles\ChangeDisplayButton2Style.xaml;Styles\MenuButtonsStyle.xaml;Styles\MenuButtonStyle.xaml;Styles\SearchButtonStyle.xaml;
+Sections\CalendarPage.xaml;Sections\ConcertsPage.xaml;Sections\ExhibitionsPage.xaml;Sections\FilmsPage.xaml;Sections\SearchPage.xaml;Sections\SettingsPage.xaml;Styles\CalendarButton.xaml;Styles\CalendarStyle.xaml;MainWindow.xaml;Styles\AllPagesMenuButtons.xaml;Styles\MenuButtonsStyle.xaml;Styles\MenuButtonStyle.xaml;Styles\SearchButtonStyle.xaml;
 
 False
 

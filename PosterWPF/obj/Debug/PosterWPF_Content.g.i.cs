@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("menuimage.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/calendarimagedisable.jpg")]
 
 

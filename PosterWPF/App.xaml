@@ -6,11 +6,12 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/ChangeDisplayButton1Style.xaml" />
-                <ResourceDictionary Source="Styles/ChangeDisplayButton2Style.xaml" />
+                <ResourceDictionary Source="Styles/AllPagesMenuButtons.xaml" />
                 <ResourceDictionary Source="Styles/SearchButtonStyle.xaml"/>
                 <ResourceDictionary Source="Styles/MenuButtonStyle.xaml"/>
                 <ResourceDictionary Source="Styles/MenuButtonsStyle.xaml"/>
+                <ResourceDictionary Source="Styles/CalendarButton.xaml"/>
+                <ResourceDictionary Source="Styles/CalendarStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
          
