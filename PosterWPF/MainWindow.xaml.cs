@@ -21,6 +21,8 @@ namespace PosterWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        static MainWindow LinkToMainWindow;
+        
         
         public MainWindow()
         {
@@ -30,6 +32,7 @@ namespace PosterWPF
         private void Poster_Loaded(object sender, RoutedEventArgs e)
         {
             SetGridChildren(MainBody, new FilmsPage());
+            LinkToMainWindow = this;
         }
 
         private void AnimationMenu_Click(object sender, RoutedEventArgs e)
@@ -55,8 +58,11 @@ namespace PosterWPF
         {
             RenameSection(sender as Button);
             MoveMenu(Menu.Margin.Left, -248);
-            SetGridChildren(MainBody, new FilmsPage());
+            SetGridChildren(MainBody, filmsPage);
+            
         }
+
+        
 
         private void ConcertsButton_Click(object sender, RoutedEventArgs e)
         {
@@ -82,9 +88,15 @@ namespace PosterWPF
         private void Calendar_Click(object sender, RoutedEventArgs e)
         {
             OpenCalendar.Visibility = Visibility.Visible;
-            CalendarPage calendarPage = new CalendarPage();
             SetGridChildren(OpenCalendar, calendarPage);
             OpenCalendar.MouseLeave += OpenCalendar_MouseLeave;
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            SetGridChildren(MainBody, BackToFilms);
+            AnimationMenu.Visibility = Visibility.Visible;
+            Back.Visibility = Visibility.Hidden;
         }
 
         private void OpenCalendar_MouseLeave(object sender, MouseEventArgs e)

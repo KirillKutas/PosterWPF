@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -6,13 +10,16 @@ using System.Windows.Media.Imaging;
 
 namespace PosterWPF.Sections
 {
-    partial class FilmsPage
+    partial class AllFilms
     {
+        public delegate void ClickGrid(GridFilm gridFilm);
+        public event ClickGrid EventClickGrid;
         public void OutputElements()
         {
             Grid grid = new Grid();
             grid.Name = "grid1"; // имя потом брать из названия фильма
             grid.Height = 178;
+            grid.MouseDown += Grid_MouseDown;
 
             Border border = new Border();
             border.Background = Brushes.WhiteSmoke;
@@ -66,6 +73,12 @@ namespace PosterWPF.Sections
             grid.Children.Add(country);
 
 
+        }
+
+        private void Grid_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            EventClickGrid?.Invoke(new GridFilm());
+            EventClickGrid += MainWindow.EventClickGrid;
         }
     }
 }

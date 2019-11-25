@@ -54,6 +54,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Sections\AllCinemas.cs" />
+    <Compile Include="Sections\AllCinemas.xaml.cs">
+      <DependentUpon>AllCinemas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\AllConcertHalls.cs" />
+    <Compile Include="Sections\AllConcertHalls.xaml.cs">
+      <DependentUpon>AllConcertHalls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\AllConcerts.cs" />
+    <Compile Include="Sections\AllConcerts.xaml.cs">
+      <DependentUpon>AllConcerts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\AllExhibition.cs" />
+    <Compile Include="Sections\AllExhibition.xaml.cs">
+      <DependentUpon>AllExhibition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\AllExhibitionCenters.cs" />
+    <Compile Include="Sections\AllExhibitionCenters.xaml.cs">
+      <DependentUpon>AllExhibitionCenters.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\AllFilms.cs" />
+    <Compile Include="Sections\AllFilms.xaml.cs">
+      <DependentUpon>AllFilms.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Sections\CalendarPage.xaml.cs">
       <DependentUpon>CalendarPage.xaml</DependentUpon>
     </Compile>
@@ -63,9 +87,26 @@
     <Compile Include="Sections\ExhibitionsPage.xaml.cs">
       <DependentUpon>ExhibitionsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sections\FilmsPage.cs" />
     <Compile Include="Sections\FilmsPage.xaml.cs">
       <DependentUpon>FilmsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\GridCinema.xaml.cs">
+      <DependentUpon>GridCinema.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\GridConcertHalls.xaml.cs">
+      <DependentUpon>GridConcertHalls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\GridConcerts.xaml.cs">
+      <DependentUpon>GridConcerts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\GridExhibition.xaml.cs">
+      <DependentUpon>GridExhibition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\GridExhibitionCenters.xaml.cs">
+      <DependentUpon>GridExhibitionCenters.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\GridFilm.xaml.cs">
+      <DependentUpon>GridFilm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Sections\SearchPage.xaml.cs">
       <DependentUpon>SearchPage.xaml</DependentUpon>
@@ -73,6 +114,30 @@
     <Compile Include="Sections\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="Sections\AllCinemas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sections\AllConcertHalls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sections\AllConcerts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sections\AllExhibition.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sections\AllExhibitionCenters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sections\AllFilms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Sections\CalendarPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -89,11 +154,39 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Sections\GridCinema.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sections\GridConcertHalls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sections\GridConcerts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sections\GridExhibition.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sections\GridExhibitionCenters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sections\GridFilm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Sections\SearchPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Sections\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\BackButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -119,6 +212,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Styles\AllPagesMenuButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\GridFilmButtonResource.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -172,6 +269,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\CalendarImageDisable.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\BuyButton.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\BackButton.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\BackButtonDisable.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

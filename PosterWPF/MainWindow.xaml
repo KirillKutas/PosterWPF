@@ -13,9 +13,14 @@
         </Grid.RowDefinitions>
         <Grid HorizontalAlignment="Left" Height="53" VerticalAlignment="Top" Width="494" Grid.RowSpan="2" >
             <Label x:Name="Section" Content="Films" HorizontalAlignment="Left" Margin="90,0,0,0" VerticalAlignment="Top" Width="186" Height="53" Foreground="#FFA02525" FontSize="36" FontFamily="Times New Roman" RenderTransformOrigin="0.5,0.435"/>
-            <Button x:Name="AnimationMenu" Content="" HorizontalAlignment="Left" Width="56" Click="AnimationMenu_Click" BorderBrush="White" Style="{DynamicResource MenuButtonStyle}">
+            <Button x:Name="AnimationMenu" Visibility="Visible" Content="" HorizontalAlignment="Left" Width="56" Click="AnimationMenu_Click" BorderBrush="White" Style="{DynamicResource MenuButtonStyle}">
                 <Button.Background>
                     <ImageBrush ImageSource="Image/MenuImage.jpg"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="Back" Visibility="Hidden" Content="" HorizontalAlignment="Left" Click="Back_Click" Width="56" BorderBrush="White" Style="{DynamicResource BackButtonStyle}">
+                <Button.Background>
+                    <ImageBrush ImageSource="Image/BackButton.jpg"/>
                 </Button.Background>
             </Button>
         </Grid>

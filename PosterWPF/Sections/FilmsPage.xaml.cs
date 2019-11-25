@@ -29,18 +29,22 @@ namespace PosterWPF.Sections
         {
             FilmsMenu.BorderThickness = new Thickness(0, 0, 1, 3);
             CinemasMenu.BorderThickness = new Thickness(1,0,0,0);
+            Output.Children.Clear();
+            Output.Children.Add(new AllFilms());
         }
 
         private void CinemasMenu_Click(object sender, RoutedEventArgs e)
         {
             FilmsMenu.BorderThickness = new Thickness(0, 0, 1, 0);
             CinemasMenu.BorderThickness = new Thickness(1, 0, 0, 3);
+            Output.Children.Clear();
+            Output.Children.Add(new AllCinemas());
         }
 
         private void MainFilmsPage_Loaded(object sender, RoutedEventArgs e)
         {
             Date.Content = DateTime.Today;
-            OutputElements();
+            Output.Children.Add(new AllFilms());
         }
     }
 }

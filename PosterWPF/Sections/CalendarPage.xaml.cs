@@ -20,9 +20,21 @@ namespace PosterWPF.Sections
     /// </summary>
     public partial class CalendarPage : UserControl
     {
+        public DateTime? selectedDate;
         public CalendarPage()
         {
             InitializeComponent();
+        }
+
+        private void CalendarPage2_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void ChangeDate_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedDate = ChangeDate.SelectedDate;
+            ChangeDate.SelectedDate = selectedDate.Value.Date;
         }
     }
 }

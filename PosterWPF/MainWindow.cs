@@ -7,6 +7,9 @@ namespace PosterWPF
 {
     partial class MainWindow
     {
+        private FilmsPage filmsPage = new FilmsPage();
+        private CalendarPage calendarPage = new CalendarPage();
+        private UserControl BackToFilms;
 
         private void MoveMenu(double x1, double x2)
         {
@@ -27,5 +30,19 @@ namespace PosterWPF
         {
             Section.Content = button.Content;
         }
+
+        public static void EventClickGrid(UserControl userControl)
+        {
+
+            LinkToMainWindow.SetGridChildren(LinkToMainWindow.MainBody, userControl);
+        }
+
+        public static void OpenFilm(UserControl userControl)
+        {
+            LinkToMainWindow.AnimationMenu.Visibility = Visibility.Hidden;
+            LinkToMainWindow.Back.Visibility = Visibility.Visible;
+            LinkToMainWindow.BackToFilms = userControl;
+        }
+
     }
 }

@@ -24,5 +24,27 @@ namespace PosterWPF.Sections
         {
             InitializeComponent();
         }
+
+        private void Exhibition_Click(object sender, RoutedEventArgs e)
+        {
+            Exhibition.BorderThickness = new Thickness(0, 0, 1, 3);
+            ExhibitionCenters.BorderThickness = new Thickness(1, 0, 0, 0);
+            Output.Children.Clear();
+            Output.Children.Add(new AllExhibition());
+        }
+
+        private void ExhibitionCenters_Click(object sender, RoutedEventArgs e)
+        {
+            Exhibition.BorderThickness = new Thickness(0, 0, 1, 0);
+            ExhibitionCenters.BorderThickness = new Thickness(1, 0, 0, 3);
+            Output.Children.Clear();
+            Output.Children.Add(new AllExhibitionCenters());
+        }
+
+        private void MainExhibitionPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            Date.Content = DateTime.Today;
+            Output.Children.Add(new AllExhibition());
+        }
     }
 }

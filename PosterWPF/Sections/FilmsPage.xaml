@@ -18,14 +18,8 @@
             </Border>
 
         </StackPanel>
-        <ScrollViewer Margin="0,86,0,0" CanContentScroll="True">
-            <StackPanel x:Name="MainStack" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="494" >
-                
-            </StackPanel>
-        </ScrollViewer>
-        
-        
+        <Grid x:Name="Output" Margin="0,86,0,0">
 
-
+        </Grid>
     </Grid>
 </UserControl>

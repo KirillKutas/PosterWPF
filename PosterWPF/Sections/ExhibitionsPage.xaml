@@ -5,8 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PosterWPF.Sections"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid x:Name="ExhibitionsPage1" Background="#FF854C4C">
-            
+             d:DesignHeight="716" d:DesignWidth="494" x:Name="MainExhibitionPage" Loaded="MainExhibitionPage_Loaded">
+    <Grid x:Name="ExhibitionsPage1" Background="White">
+        <StackPanel x:Name="TopStack" Height="85" HorizontalAlignment="Left" VerticalAlignment="Top" Width="494" ScrollViewer.CanContentScroll="False" CanVerticallyScroll="False">
+            <StackPanel Orientation="Horizontal" Height="54">
+                <Button x:Name="Exhibition" BorderThickness="0,0,1,3" Content="Exhibition" Width="247" FontFamily="Times New Roman" FontSize="24" Background="White" BorderBrush="#FFA02525" Click="Exhibition_Click" Style="{DynamicResource ButtonsStyle1}"/>
+                <Button x:Name="ExhibitionCenters" BorderThickness="1,0,0,0" Content="Exhibition Centers" Width="247" FontFamily="Times New Roman" FontSize="24" Background="White" BorderBrush="#FFA02525" Click="ExhibitionCenters_Click" Style="{DynamicResource ButtonsStyle1}"/>
+            </StackPanel>
+            <Border Height="30" Background="WhiteSmoke" >
+                <Label x:Name="Date" Content="Date" FontSize="15"/>
+            </Border>
+
+        </StackPanel>
+        <Grid x:Name="Output" Margin="0,86,0,0">
+
+        </Grid>
     </Grid>
 </UserControl>
