@@ -19,6 +19,7 @@ FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\Grid
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\SearchPage.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\SettingsPage.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\SignInForm.xaml;;
+FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\VkLogin.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\BackButtonStyle.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\CalendarButton.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\CalendarStyle.xaml;;
@@ -28,5 +29,8 @@ FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\GridFi
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\MenuButtonsStyle.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\MenuButtonStyle.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\SearchButtonStyle.xaml;;
+FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\SginInButtons.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\SignInButtonStyle.xaml;;
+FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\VkButton.xaml;;
+FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\SignUp.xaml;;
 

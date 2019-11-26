@@ -15,6 +15,8 @@
                 <ResourceDictionary Source="Styles/GridFilmButtonResource.xaml"/>
                 <ResourceDictionary Source="Styles/BackButtonStyle.xaml"/>
                 <ResourceDictionary Source="Styles/SignInButtonStyle.xaml"/>
+                <ResourceDictionary Source="Styles/VkButton.xaml"/>
+                <ResourceDictionary Source="Styles/SginInButtons.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
          

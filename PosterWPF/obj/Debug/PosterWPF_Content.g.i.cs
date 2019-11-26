@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/backbuttondisable.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/vk.png")]
 
 

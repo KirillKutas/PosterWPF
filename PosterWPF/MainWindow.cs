@@ -39,6 +39,7 @@ namespace PosterWPF
 
         public static void OpenFilm(UserControl userControl)
         {
+            LinkToMainWindow.Calendar.Visibility = Visibility.Hidden;
             LinkToMainWindow.AnimationMenu.Visibility = Visibility.Hidden;
             LinkToMainWindow.Back.Visibility = Visibility.Visible;
             LinkToMainWindow.BackToFilms = userControl;

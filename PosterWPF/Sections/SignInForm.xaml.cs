@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using PosterWPF.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VkNet;
+using VkNet.AudioBypassService.Extensions;
+using VkNet.Model;
 
 namespace PosterWPF.Sections
 {
@@ -40,19 +45,46 @@ namespace PosterWPF.Sections
         private void LoginOrEmail_LostFocus(object sender, RoutedEventArgs e)
         {
             if (LoginOrEmail.Text == "")
-                LoginOrEmail.Text = "Login or E-mail";
+            {
+                LoginOrEmail.Foreground = Brushes.Gainsboro;
+                LoginOrEmail.Text = "E-mail";
+            }      
         }
 
         private void LoginOrEmail_GotFocus(object sender, RoutedEventArgs e)
         {
             LoginOrEmail.Text = "";
+            LoginOrEmail.Foreground = Brushes.Black;
         }
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)
         {
+            if (true) // проверка
+            {
+
+            }
             EventOpenSettings?.Invoke(new SettingsPage());
             EventOpenSettings += MainWindow.EventClickGrid;
             EventOpenSettings(new SettingsPage());
+        }
+
+        private void Vk_Click(object sender, RoutedEventArgs e)
+        {
+            var VkLogin = new VkLogin();
+            VkLogin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            VkLogin.ShowDialog();
+        }
+
+        private void ForgotPassword_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Your password has been sent to your email");
+        }
+
+        private void SignUp_Click(object sender, RoutedEventArgs e)
+        {
+            var signUp = new SignUp();
+            signUp.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            signUp.ShowDialog();
         }
     }
 }

@@ -120,6 +120,7 @@ namespace PosterWPF
             SetGridChildren(MainBody, BackToFilms);
             AnimationMenu.Visibility = Visibility.Visible;
             Back.Visibility = Visibility.Hidden;
+            Calendar.Visibility = Visibility.Visible;
         }
 
         private void OpenCalendar_MouseLeave(object sender, MouseEventArgs e)
