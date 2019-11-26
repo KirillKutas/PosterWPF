@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -33,6 +35,27 @@ namespace PosterWPF
         {
             SetGridChildren(MainBody, new FilmsPage());
             LinkToMainWindow = this;
+            FileInfo fileInfo = new FileInfo("CurrentUser.dat");
+            if (fileInfo.Exists)
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                using (FileStream fs = new FileStream("CurrentUser.dat", FileMode.OpenOrCreate))
+                {
+                    User.Name = (string)formatter.Deserialize(fs);
+                }
+            }
+        }
+
+        private void Poster_Closed(object sender, EventArgs e)
+        {
+            if (User.Name != null)
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                using (FileStream fs = new FileStream("CurrentUser.dat", FileMode.OpenOrCreate))
+                {
+                    formatter.Serialize(fs, User.Name);
+                }
+            }
         }
 
         private void AnimationMenu_Click(object sender, RoutedEventArgs e)
@@ -103,5 +126,7 @@ namespace PosterWPF
         {
             OpenCalendar.Visibility = Visibility.Hidden;
         }
+
+        
     }
 }

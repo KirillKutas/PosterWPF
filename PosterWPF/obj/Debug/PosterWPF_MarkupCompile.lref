@@ -1,15 +1,24 @@
 ﻿
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\App.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\AllCinemas.xaml;;
+FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\AllConcertHalls.xaml;;
+FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\AllConcerts.xaml;;
+FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\AllExhibition.xaml;;
+FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\AllExhibitionCenters.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\AllFilms.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\CalendarPage.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\ConcertsPage.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\ExhibitionsPage.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\FilmsPage.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\GridCinema.xaml;;
+FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\GridConcertHalls.xaml;;
+FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\GridConcerts.xaml;;
+FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\GridExhibition.xaml;;
+FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\GridExhibitionCenters.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\GridFilm.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\SearchPage.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\SettingsPage.xaml;;
+FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\SignInForm.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\BackButtonStyle.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\CalendarButton.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\CalendarStyle.xaml;;
@@ -19,12 +28,5 @@ FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\GridFi
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\MenuButtonsStyle.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\MenuButtonStyle.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\SearchButtonStyle.xaml;;
-FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\AllConcerts.xaml;;
-FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\GridConcerts.xaml;;
-FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\AllConcertHalls.xaml;;
-FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\GridConcertHalls.xaml;;
-FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\AllExhibition.xaml;;
-FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\AllExhibitionCenters.xaml;;
-FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\GridExhibition.xaml;;
-FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\GridExhibitionCenters.xaml;;
+FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\SignInButtonStyle.xaml;;
 

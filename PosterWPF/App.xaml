@@ -14,6 +14,7 @@
                 <ResourceDictionary Source="Styles/CalendarStyle.xaml"/>
                 <ResourceDictionary Source="Styles/GridFilmButtonResource.xaml"/>
                 <ResourceDictionary Source="Styles/BackButtonStyle.xaml"/>
+                <ResourceDictionary Source="Styles/SignInButtonStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
          

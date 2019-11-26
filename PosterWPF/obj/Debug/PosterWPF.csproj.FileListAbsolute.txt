@@ -58,3 +58,6 @@ E:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\obj\Debug\Sect
 E:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\obj\Debug\Sections\AllExhibitionCenters.baml
 E:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\obj\Debug\Sections\GridExhibition.baml
 E:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\obj\Debug\Sections\GridExhibitionCenters.baml
+E:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\obj\Debug\Sections\SignInForm.g.cs
+E:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\obj\Debug\Sections\SignInForm.baml
+E:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\obj\Debug\Styles\SignInButtonStyle.baml

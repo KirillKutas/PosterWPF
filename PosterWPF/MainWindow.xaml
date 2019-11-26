@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PosterWPF"
         mc:Ignorable="d"
-        Title="Poster" Height="800" Width="500" ResizeMode="NoResize" Loaded="Poster_Loaded">
+        Title="Poster" Height="800" Width="500" ResizeMode="NoResize" Closed="Poster_Closed" Loaded="Poster_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="15*"/>
