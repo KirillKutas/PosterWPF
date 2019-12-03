@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\App.xaml
-33-1572638022
+3556636334
 
-38-1487870271
-13233159414
-Sections\AllCinemas.xaml;Sections\AllConcertHalls.xaml;Sections\AllConcerts.xaml;Sections\AllExhibition.xaml;Sections\AllExhibitionCenters.xaml;Sections\AllFilms.xaml;Sections\CalendarPage.xaml;Sections\ConcertsPage.xaml;Sections\ExhibitionsPage.xaml;Sections\FilmsPage.xaml;Sections\GridCinema.xaml;Sections\GridConcertHalls.xaml;Sections\GridConcerts.xaml;Sections\GridExhibition.xaml;Sections\GridExhibitionCenters.xaml;Sections\GridFilm.xaml;Sections\SearchPage.xaml;Sections\SettingsPage.xaml;Sections\SignInForm.xaml;Sections\SignUp.xaml;Sections\VkLogin.xaml;Styles\BackButtonStyle.xaml;Styles\CalendarButton.xaml;Styles\CalendarStyle.xaml;MainWindow.xaml;Styles\AllPagesMenuButtons.xaml;Styles\GridFilmButtonResource.xaml;Styles\MenuButtonsStyle.xaml;Styles\MenuButtonStyle.xaml;Styles\SearchButtonStyle.xaml;Styles\SginInButtons.xaml;Styles\SignInButtonStyle.xaml;Styles\VkButton.xaml;
+44-627741027
+133-750700967
+Sections\AllCinemas.xaml;Sections\AllConcertHalls.xaml;Sections\AllConcerts.xaml;Sections\AllExhibition.xaml;Sections\AllExhibitionCenters.xaml;Sections\AllFilms.xaml;Sections\AppManagement.xaml;Sections\CalendarPage.xaml;Sections\ConcertsPage.xaml;Sections\ExhibitionsPage.xaml;Sections\FilmsPage.xaml;Sections\GridCinema.xaml;Sections\GridConcertHalls.xaml;Sections\GridConcerts.xaml;Sections\GridExhibition.xaml;Sections\GridExhibitionCenters.xaml;Sections\GridFilm.xaml;Sections\SearchPage.xaml;Sections\SettingsPage.xaml;Sections\SignInForm.xaml;Sections\SignUp.xaml;Sections\VkLogin.xaml;Styles\BackButtonStyle.xaml;Styles\CalendarButton.xaml;Styles\CalendarStyle.xaml;MainWindow.xaml;Styles\AllPagesMenuButtons.xaml;Styles\ComboBoxStyle.xaml;Styles\GridFilmButtonResource.xaml;Styles\MenuButtonsStyle.xaml;Styles\MenuButtonStyle.xaml;Styles\SearchButtonStyle.xaml;Styles\SginInButtons.xaml;Styles\SignInButtonStyle.xaml;Styles\VkButton.xaml;
 
-False
+True
 

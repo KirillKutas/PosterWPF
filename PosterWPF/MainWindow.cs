@@ -33,7 +33,9 @@ namespace PosterWPF
 
         public static void EventClickGrid(UserControl userControl)
         {
-
+            LinkToMainWindow.Calendar.Visibility = Visibility.Visible;
+            LinkToMainWindow.AnimationMenu.Visibility = Visibility.Visible;
+            LinkToMainWindow.Back.Visibility = Visibility.Hidden;
             LinkToMainWindow.SetGridChildren(LinkToMainWindow.MainBody, userControl);
         }
 

@@ -185,3 +185,6 @@ E:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\obj\Debug\Sect
 E:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\obj\Debug\Sections\VkLogin.baml
 E:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\obj\Debug\Sections\SignUp.g.cs
 E:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\obj\Debug\Sections\SignUp.baml
+E:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\obj\Debug\Sections\AppManagement.g.cs
+E:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\obj\Debug\Sections\AppManagement.baml
+E:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\obj\Debug\Styles\ComboBoxStyle.baml

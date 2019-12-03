@@ -55,6 +55,7 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="protobuf-net, Version=2.4.0.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
       <HintPath>..\packages\protobuf-net.2.4.4\lib\net40\protobuf-net.dll</HintPath>
     </Reference>
@@ -87,6 +88,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BdClassAdd.cs" />
+    <Compile Include="BdClassGet.cs" />
+    <Compile Include="Models\FilmsClass.cs" />
+    <Compile Include="Models\UsersClass.cs" />
     <Compile Include="Sections\AllCinemas.cs" />
     <Compile Include="Sections\AllCinemas.xaml.cs">
       <DependentUpon>AllCinemas.xaml</DependentUpon>
@@ -110,6 +115,10 @@
     <Compile Include="Sections\AllFilms.cs" />
     <Compile Include="Sections\AllFilms.xaml.cs">
       <DependentUpon>AllFilms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\AppManagement.cs" />
+    <Compile Include="Sections\AppManagement.xaml.cs">
+      <DependentUpon>AppManagement.xaml</DependentUpon>
     </Compile>
     <Compile Include="Sections\CalendarPage.xaml.cs">
       <DependentUpon>CalendarPage.xaml</DependentUpon>
@@ -178,6 +187,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Sections\AllFilms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sections\AppManagement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -267,6 +280,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Styles\AllPagesMenuButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ComboBoxStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -19,6 +19,9 @@ namespace PosterWPF.Sections
     /// </summary>
     public partial class SignUp : Window
     {
+        public delegate void ClickGrid(SettingsPage settingsPage);
+        public event ClickGrid EventOpenSettings;
+
         public SignUp()
         {
             InitializeComponent();
@@ -26,12 +29,67 @@ namespace PosterWPF.Sections
 
         private void SignUp_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            BdClassGet bdClassGet = new BdClassGet();
+            BdClassAdd bdClassAdd = new BdClassAdd();
+
+            List<string> EMail = new List<string>();
+
+            bdClassGet.GetAllUsers(EMail);
+
+            bool coincidences = EMail.Any(n => n == Mail.Text);
+            if (coincidences)
+            {
+                MessageBox.Show("Such a user exists");
+                Mail.Text = "";
+                Name.Text = "";
+                Pass.Password = "";
+            }
+            else
+            {
+                bdClassAdd.AddUser(EMail.Count + 1, Mail.Text, Name.Text, User.HashPassword(Pass.Password));
+                MessageBox.Show("Registration was successful");
+                User.Name = Name.Text;
+                EventOpenSettings?.Invoke(new SettingsPage());
+                EventOpenSettings += MainWindow.EventClickGrid;
+                EventOpenSettings(new SettingsPage());
+                Close();
+            }
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+
+        private void Mail_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Mail.Text = "";
+            Mail.Foreground = Brushes.Black;
+        }
+
+        private void Mail_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (Mail.Text == "")
+            {
+                Mail.Foreground = Brushes.Gainsboro;
+                Mail.Text = "E-mail";
+            }
+        }
+
+        private void Name_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Name.Text = "";
+            Name.Foreground = Brushes.Black;
+        }
+
+        private void Name_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (Name.Text == "")
+            {
+                Name.Foreground = Brushes.Gainsboro;
+                Name.Text = "E-mail";
+            }
         }
     }
 }

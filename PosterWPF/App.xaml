@@ -17,6 +17,7 @@
                 <ResourceDictionary Source="Styles/SignInButtonStyle.xaml"/>
                 <ResourceDictionary Source="Styles/VkButton.xaml"/>
                 <ResourceDictionary Source="Styles/SginInButtons.xaml"/>
+                <ResourceDictionary Source="Styles/ComboBoxStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
          

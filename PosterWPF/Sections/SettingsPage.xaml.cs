@@ -30,7 +30,7 @@ namespace PosterWPF.Sections
         {
             if (User.Name != null)
             {
-                if(User.Name == "Admin")
+                if (User.Name == "Admin")
                 {
                     Button ApplicationManagement = new Button();
                     ApplicationManagement.Content = "Application management";
@@ -40,43 +40,31 @@ namespace PosterWPF.Sections
                     ApplicationManagement.Width = 494;
                     ApplicationManagement.BorderThickness = new Thickness(0, 0, 0, 2);
                     ApplicationManagement.FontSize = 24;
-                    
-                    Button LogOut = new Button();
-                    LogOut.Content = "Log out";
-                    LogOut.Background = Brushes.White;
-                    LogOut.Style = (Style)LogOut.FindResource("ButtonsStyle1");
-                    LogOut.Height = 50;
-                    LogOut.Width = 100;
-                    LogOut.BorderThickness = new Thickness(0, 0, 0, 2);
-                    LogOut.FontSize = 24;
-                    LogOut.Click += LogOut_Click;
-
+                    ApplicationManagement.Click += ApplicationManagement_Click;
                     MainStack.Children.Add(ApplicationManagement);
-                    MainStack.Children.Add(LogOut);
                 }
-                else
-                {
-                    Button AccountManagement = new Button();
-                    AccountManagement.Content = "Account management";
-                    AccountManagement.Background = Brushes.White;
-                    AccountManagement.Style = (Style)AccountManagement.FindResource("ButtonsStyle1");
-                    AccountManagement.Height = 50;
-                    AccountManagement.Width = 494;
-                    AccountManagement.BorderThickness = new Thickness(0, 0, 0, 2);
-                    AccountManagement.FontSize = 24;
 
-                    Button LogOut = new Button();
-                    LogOut.Content = "Log out";
-                    LogOut.Background = Brushes.White;
-                    LogOut.Style = (Style)LogOut.FindResource("ButtonsStyle1");
-                    LogOut.Height = 50;
-                    LogOut.Width = 494;
-                    LogOut.BorderThickness = new Thickness(0, 0, 0, 2);
-                    LogOut.FontSize = 24;
+                Button PersonalAccount = new Button();
+                PersonalAccount.Content = "Personal account";
+                PersonalAccount.Background = Brushes.White;
+                PersonalAccount.Style = (Style)PersonalAccount.FindResource("ButtonsStyle1");
+                PersonalAccount.Height = 50;
+                PersonalAccount.Width = 494;
+                PersonalAccount.BorderThickness = new Thickness(0, 0, 0, 2);
+                PersonalAccount.FontSize = 24;
+                MainStack.Children.Add(PersonalAccount);
 
-                    MainStack.Children.Add(AccountManagement);
-                    MainStack.Children.Add(LogOut);
-                }
+                Button LogOut = new Button();
+                LogOut.Content = "Log out";
+                LogOut.Background = Brushes.White;
+                LogOut.Style = (Style)LogOut.FindResource("ButtonsStyle1");
+                LogOut.Height = 50;
+                LogOut.Width = 100;
+                LogOut.BorderThickness = new Thickness(0, 0, 0, 2);
+                LogOut.FontSize = 24;
+                LogOut.Click += LogOut_Click;
+
+                MainStack.Children.Add(LogOut);
             }
             else
             {
@@ -92,6 +80,12 @@ namespace PosterWPF.Sections
 
                 MainStack.Children.Add(SignIn);
             }
+        }
+
+        private void ApplicationManagement_Click(object sender, RoutedEventArgs e)
+        {
+            var appM = new AppManagement();
+            appM.Show();
         }
 
         private void SignIn_Click(object sender, RoutedEventArgs e)

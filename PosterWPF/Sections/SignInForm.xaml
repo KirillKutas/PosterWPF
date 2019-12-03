@@ -9,7 +9,7 @@
     <Grid Background="white">
         <Grid Margin="0,100,0,0">
             <Label HorizontalAlignment="Center" FontSize="28" FontFamily="Times New Roman" Content="Sign in" Margin="0,20,0,0" VerticalAlignment="Top"/>
-            <TextBox GotFocus="LoginOrEmail_GotFocus" LostFocus="LoginOrEmail_LostFocus" x:Name="LoginOrEmail" HorizontalAlignment="Center" Height="30" Margin="0,80,0,0" Foreground="Gainsboro" FontSize="18" TextWrapping="Wrap" Text="E-mail" VerticalAlignment="Top" Width="200"/>
+            <TextBox GotFocus="LoginOrEmail_GotFocus" LostFocus="LoginOrEmail_LostFocus" x:Name="Email" HorizontalAlignment="Center" Height="30" Margin="0,80,0,0" Foreground="Gainsboro" FontSize="18" TextWrapping="Wrap" Text="E-mail" VerticalAlignment="Top" Width="200"/>
             <PasswordBox x:Name="UserPassword" HorizontalAlignment="Center" Margin="0,110,0,0" VerticalAlignment="Top" Height="30" Width="200" />
             <Button Click="SignInButton_Click" FontFamily="Times New Roman" x:Name="SignInButton" Style="{DynamicResource SignInStyle}" Height="30" Width="200" Background="White" BorderThickness="0,0,0,2" FontSize="18" Content="Sign In" HorizontalAlignment="Center" Margin="0,150,0,0" VerticalAlignment="Top" />
             <Label Content="Login as user" FontSize="18" FontFamily="Times New Roman" HorizontalAlignment="Center" Margin="0,200,0,0" VerticalAlignment="Top"/>

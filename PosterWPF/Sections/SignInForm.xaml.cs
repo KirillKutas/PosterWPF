@@ -44,28 +44,42 @@ namespace PosterWPF.Sections
 
         private void LoginOrEmail_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (LoginOrEmail.Text == "")
+            if (Email.Text == "")
             {
-                LoginOrEmail.Foreground = Brushes.Gainsboro;
-                LoginOrEmail.Text = "E-mail";
+                Email.Foreground = Brushes.Gainsboro;
+                Email.Text = "E-mail";
             }      
         }
 
         private void LoginOrEmail_GotFocus(object sender, RoutedEventArgs e)
         {
-            LoginOrEmail.Text = "";
-            LoginOrEmail.Foreground = Brushes.Black;
+            Email.Text = "";
+            Email.Foreground = Brushes.Black;
         }
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)
         {
-            if (true) // проверка
-            {
+            BdClassGet bdClass = new BdClassGet();
 
+            List<string> Mail = new List<string>();
+            List<string> Name = new List<string>();
+            List<string> Password = new List<string>();
+
+            bdClass.GetAllUsers(Mail, Name, Password);
+            
+            for(int i = 0; i < Mail.Count; i++)
+            {
+                if(Mail[i] == Email.Text)
+                {
+                    if(Password[i] == UserPassword.Password)
+                    {
+                        User.Name = Name[i];
+                        EventOpenSettings?.Invoke(new SettingsPage());
+                        EventOpenSettings += MainWindow.EventClickGrid;
+                        EventOpenSettings(new SettingsPage());
+                    }
+                }
             }
-            EventOpenSettings?.Invoke(new SettingsPage());
-            EventOpenSettings += MainWindow.EventClickGrid;
-            EventOpenSettings(new SettingsPage());
         }
 
         private void Vk_Click(object sender, RoutedEventArgs e)

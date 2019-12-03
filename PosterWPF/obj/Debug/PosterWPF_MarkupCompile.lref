@@ -6,6 +6,7 @@ FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\AllC
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\AllExhibition.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\AllExhibitionCenters.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\AllFilms.xaml;;
+FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\AppManagement.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\CalendarPage.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\ConcertsPage.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\ExhibitionsPage.xaml;;
@@ -19,12 +20,14 @@ FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\Grid
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\SearchPage.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\SettingsPage.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\SignInForm.xaml;;
+FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\SignUp.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\VkLogin.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\BackButtonStyle.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\CalendarButton.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\CalendarStyle.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\MainWindow.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\AllPagesMenuButtons.xaml;;
+FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\ComboBoxStyle.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\GridFilmButtonResource.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\MenuButtonsStyle.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\MenuButtonStyle.xaml;;
@@ -32,5 +35,4 @@ FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\Search
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\SginInButtons.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\SignInButtonStyle.xaml;;
 FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Styles\VkButton.xaml;;
-FE:\Kirill\5 sem\Курсовой проект\PosterWPF\PosterWPF\Sections\SignUp.xaml;;
 
