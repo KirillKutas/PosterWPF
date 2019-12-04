@@ -89,8 +89,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BdClassAdd.cs" />
+    <Compile Include="BdClassDelete.cs" />
     <Compile Include="BdClassGet.cs" />
+    <Compile Include="BdClassUpdate.cs" />
+    <Compile Include="Models\CinemasClass.cs" />
     <Compile Include="Models\FilmsClass.cs" />
+    <Compile Include="Models\MICClass.cs" />
     <Compile Include="Models\UsersClass.cs" />
     <Compile Include="Sections\AllCinemas.cs" />
     <Compile Include="Sections\AllCinemas.xaml.cs">

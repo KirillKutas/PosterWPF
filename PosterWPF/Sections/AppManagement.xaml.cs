@@ -24,6 +24,8 @@ namespace PosterWPF.Sections
     {
         BdClassGet bdClassGet = new BdClassGet();
         BdClassAdd bdClassAdd = new BdClassAdd();
+        BdClassDelete bdClassDelete = new BdClassDelete();
+        BdClassUpdate bdClassUpdate = new BdClassUpdate();
 
         public AppManagement()
         {
@@ -60,25 +62,11 @@ namespace PosterWPF.Sections
             ChangeGrid((Grid)grid);
         }
 
+
+        //////////////////////////////grids loaded///////////////////////////////////////
         private void Films_Loaded(object sender, RoutedEventArgs e)
         {
-            List<int> Id = new List<int>();
-            List<string> Name = new List<string>();
-            List<string> DescriptionAndActors = new List<string>();
-            List<byte[]> Photo = new List<byte[]>();
-            List<string> Genre = new List<string>();
-            List<string> Country = new List<string>();
-            List<string> Duration = new List<string>();
-
-            bdClassGet.GetAllFilms(Id, Name, DescriptionAndActors, Photo, Genre, Country, Duration);
-
-            List<FilmsClass> filmsClasses = new List<FilmsClass>();
-            for(int iterator = 0; iterator < Id.Count; iterator++)
-            {
-                filmsClasses.Add(new FilmsClass(Id[iterator], Name[iterator], DescriptionAndActors[iterator], Photo[iterator], Genre[iterator], Country[iterator], Duration[iterator]));
-            }
-
-            FilmsBdFrid.ItemsSource = filmsClasses;
+            refreshFilmsBdGrid();
         }
 
         private void Users_Loaded(object sender, RoutedEventArgs e)
@@ -99,30 +87,78 @@ namespace PosterWPF.Sections
             UsersBdGrid.ItemsSource = usersClasses;
         }
 
+        /////////////////////////////////Films event ///////////////////////////////////////////////////////////
         private void FilmsAdd_Click(object sender, RoutedEventArgs e)
         {
-            string pathDescription = "../../Description/" + FilmsName.Text + ".txt";
-            File.WriteAllText(pathDescription, FilmsDescription.Text);
+            try
+            {
+                string pathDescription = "../../Description/" + FilmsName.Text + ".txt";
+                File.WriteAllText(pathDescription, FilmsDescription.Text);
+                byte[] imagecode = null;
+                if (imageByte == null)
+                {
 
-            FileStream fs = new FileStream(ImageSource, FileMode.Open, FileAccess.Read);
-            BinaryReader br = new BinaryReader(fs);
-            byte[] imagecode = br.ReadBytes((Int32)fs.Length);
+                    ImageToBD(ref imagecode);
+                }
+                else
+                {
+                    imagecode = imageByte;
+                }
 
-            bdClassAdd.AddFilm(FilmsBdFrid.Items.Count, FilmsName.Text, pathDescription, imagecode, FilmsGenre.Text, FilmsCountry.Text, FilmsDuration.Text);
+                bdClassAdd.AddFilm(FilmsBdFrid.Items.Count, FilmsName.Text, pathDescription, imagecode, FilmsGenre.Text, FilmsCountry.Text, FilmsDuration.Text);
+                refreshFilmsBdGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void FilmsSave_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                string pathDescription = "../../Description/" + FilmsName.Text + ".txt";
+                File.WriteAllText(pathDescription, FilmsDescription.Text);
+                FilmsClass film = FilmsBdFrid.SelectedItem as FilmsClass;
+                byte[] imagecode = null;
+                if (imageByte == null)
+                {
 
+                    ImageToBD(ref imagecode);
+                }
+                else
+                {
+                    imagecode = imageByte;
+                }
+
+                bdClassUpdate.UpdateFilm(film.Id, FilmsName.Text, pathDescription, imagecode, FilmsGenre.Text, FilmsCountry.Text, FilmsDuration.Text);
+                refreshFilmsBdGrid();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void FilmsDelete_Click(object sender, RoutedEventArgs e)
         {
+            if(FilmsBdFrid.SelectedItem!=null)
+            {
+                FilmsClass film = FilmsBdFrid.SelectedItem as FilmsClass;
 
+                bdClassDelete.DeleteFilms(film.Id);
+                string pathDescription = "../../Description/" + film.Name + ".txt";
+                File.Delete(pathDescription);
+                refreshFilmsBdGrid();
+            }
         }
 
         private void FilmsChangeImage_Click(object sender, RoutedEventArgs e)
         {
+            imageByte = null;
             var openDialog = new OpenFileDialog();
             openDialog.Filter = "Image files (*.BMP, *.JPG, *.GIF, *.TIF, *.PNG, *.ICO, *.EMF, *.WMF)|*.bmp;*.jpg;*.gif; *.tif; *.png; *.ico; *.emf; *.wmf";
 
@@ -136,20 +172,152 @@ namespace PosterWPF.Sections
 
         private void FilmsBdFrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            FilmsClass film = FilmsBdFrid.SelectedItem as FilmsClass;
+            if (FilmsBdFrid.SelectedItem != null)
+            {
+                FilmsClass film = FilmsBdFrid.SelectedItem as FilmsClass;
 
-            FilmsName.Text = film.Name;
-            FilmsGenre.Text = film.Genre;
-            FilmsCountry.Text = film.Country;
-            FilmsDuration.Text = film.Duration;
-            FilmsDescription.Text = File.ReadAllText(film.DescriptionAndActors);
+                FilmsName.Text = film.Name;
+                FilmsGenre.Text = film.Genre;
+                FilmsCountry.Text = film.Country;
+                FilmsDuration.Text = film.Duration;
+                FilmsDescription.Text = File.ReadAllText(film.DescriptionAndActors);
+                imageByte = film.Photo;
 
-            BitmapImage image = new BitmapImage();
-            image.BeginInit();
-            image.StreamSource = new MemoryStream(film.Photo);
-            image.EndInit();
+                BitmapImage image = new BitmapImage();
+                image.BeginInit();
+                image.StreamSource = new MemoryStream(film.Photo);
+                image.EndInit();
 
-            FilmsImage.Source = image;
+                FilmsImage.Source = image;
+                
+            }
+            
+        }
+        ///////////////////////////////////Cinemas event ////////////////////////////////////
+        private void CinemasBdFrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (CinemasBdFrid.SelectedItem != null)
+            {
+                CinemasClass cinema = CinemasBdFrid.SelectedItem as CinemasClass;
+
+                CinemasName.Text = cinema.Name;
+                CinemasAddress.Text = cinema.Address;
+                imageByte = cinema.Photo;
+
+                BitmapImage image = new BitmapImage();
+                image.BeginInit();
+                image.StreamSource = new MemoryStream(cinema.Photo);
+                image.EndInit();
+
+                CinemasImage.Source = image;
+            }
+        }
+
+        private void CinemasAdd_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                byte[] imagecode = null;
+                if (imageByte == null)
+                {
+
+                    ImageToBD(ref imagecode);
+                }
+                else
+                {
+                    imagecode = imageByte;
+                }
+
+                bdClassAdd.AddCinema(CinemasBdFrid.Items.Count, CinemasName.Text, CinemasAddress.Text, imagecode);
+                refreshCinemasBdGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void CinemasSave_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                CinemasClass cinema = CinemasBdFrid.SelectedItem as CinemasClass;
+                byte[] imagecode = null;
+                if (imageByte == null)
+                {
+
+                    ImageToBD(ref imagecode);
+                }
+                else
+                {
+                    imagecode = imageByte;
+                }
+
+                bdClassUpdate.UpdateCinemas(cinema.Id, CinemasName.Text, CinemasAddress.Text, imagecode);
+                refreshCinemasBdGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void CinemasDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (CinemasBdFrid.SelectedItem != null)
+            {
+                CinemasClass cinema = CinemasBdFrid.SelectedItem as CinemasClass;
+
+                bdClassDelete.DeleteCinema(cinema.Id);
+                refreshCinemasBdGrid();
+            }
+        }
+
+        private void CinemasChangeImage_Click(object sender, RoutedEventArgs e)
+        {
+            imageByte = null;
+            var openDialog = new OpenFileDialog();
+            openDialog.Filter = "Image files (*.BMP, *.JPG, *.GIF, *.TIF, *.PNG, *.ICO, *.EMF, *.WMF)|*.bmp;*.jpg;*.gif; *.tif; *.png; *.ico; *.emf; *.wmf";
+
+            if (openDialog.ShowDialog() == true)
+            {
+                ImageSource = openDialog.FileName;
+                CinemasImage.Stretch = Stretch.Fill;
+                CinemasImage.Source = new BitmapImage(new Uri(openDialog.FileName));
+            }
+        }
+
+        private void Cinemas_Loaded(object sender, RoutedEventArgs e)
+        {
+            refreshCinemasBdGrid();
+        }
+
+
+
+        /////////////////////////////////////MIC event////////////////////////////////////////////////////
+        private void MoviesInCinemas_Loaded(object sender, RoutedEventArgs e)
+        {
+            refreshMICBdGrid();
+        }
+
+        private void MICBdFrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void MICAdd_Click(object sender, RoutedEventArgs e)
+        {
+            refreshMICBdGrid();
+        }
+
+        private void MICSave_Click(object sender, RoutedEventArgs e)
+        {
+            refreshMICBdGrid();
+        }
+
+        private void MICDelete_Click(object sender, RoutedEventArgs e)
+        {
+            refreshMICBdGrid();
         }
     }
 }

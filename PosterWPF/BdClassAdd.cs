@@ -75,13 +75,35 @@ namespace PosterWPF
                     command.Parameters.Add(CountryParameter);
                     command.Parameters.Add(DurationParameter);
 
-                    var result = command.ExecuteScalar();
+                    var result = command.ExecuteNonQuery();
                 }
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+        public void AddCinema(int Id, string Name, string Address, byte[] Photo)
+        {
+            string sqlExpression = "AddCinema";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                SqlParameter IdParameter = new SqlParameter("@newId", Id);
+                SqlParameter NameParameter = new SqlParameter("@newName", Name);
+                SqlParameter AddressParameter = new SqlParameter("@newAddress", Address);
+                SqlParameter PhotoParameter = new SqlParameter("@newPhoto", Photo);
+
+                command.Parameters.Add(IdParameter);
+                command.Parameters.Add(AddressParameter);
+                command.Parameters.Add(NameParameter);
+                command.Parameters.Add(PhotoParameter);
+
+                var result = command.ExecuteNonQuery();
             }
         }
     }
