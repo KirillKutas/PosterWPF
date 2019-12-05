@@ -82,8 +82,57 @@ namespace PosterWPF.Sections
             }
 
             MICBdFrid.ItemsSource = mICClasses;
+
+            List<string> filmIdName = new List<string>();
+            List<string> cinemaIdName = new List<string>();
+            bdClassGet.GetAllFilms(Name: filmIdName);
+            bdClassGet.GetAllCinemas(Name: cinemaIdName);
+
+            FilmIdName.Items.Clear();
+            CinemaIdName.Items.Clear();
+            foreach(var item in filmIdName)
+            {
+                FilmIdName.Items.Add(item);
+            }
+            foreach(var item in cinemaIdName)
+            {
+                CinemaIdName.Items.Add(item);
+            }
         }
 
+        void refreshCalendarBdGrid()
+        {
+            List<int> Id = new List<int>();
+            List<DateTime> Date = new List<DateTime>();
+
+            bdClassGet.GetAllDates(Id, Date);
+
+            List<CalendarClass> caledarClasses = new List<CalendarClass>();
+            for (int iterator = 0; iterator < Id.Count; iterator++)
+            {
+                caledarClasses.Add(new CalendarClass(Id[iterator], Date[iterator]));
+            }
+
+            CalendarBdFrid.ItemsSource = caledarClasses;
+        }
+
+        void refreshUsersBdGrid()
+        {
+            List<int> Id = new List<int>();
+            List<string> Mail = new List<string>();
+            List<string> Name = new List<string>();
+            List<string> Password = new List<string>();
+
+            bdClassGet.GetAllUsers(Mail, Name, Password, Id);
+
+            List<UsersClass> usersClasses = new List<UsersClass>();
+            for (int iterator = 0; iterator < Id.Count; iterator++)
+            {
+                usersClasses.Add(new UsersClass(Id[iterator], Mail[iterator], Name[iterator], Password[iterator]));
+            }
+
+            UsersBdGrid.ItemsSource = usersClasses;
+        }
         void ImageToBD(ref byte[] imagecode)
         {
             FileStream fs = new FileStream(ImageSource, FileMode.Open, FileAccess.Read);

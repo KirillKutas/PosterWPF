@@ -56,10 +56,17 @@ namespace PosterWPF.Sections
                 case "ExhibitionsInExhibitionCenters": { grid = ExhibitionsInExhibitionCenters; break; }
                 case "Calendar": { grid = Calendar; break; }
                 case "BookedMovies": { grid = BookedMovies; break; }
+                case "BookedConcerts": { grid = BookedConcerts; break; }
+                case "BookedExhibitions": { grid = BookedExhibitions; break; }
                 case "Users": { grid = Users; break; }
             }
             
             ChangeGrid((Grid)grid);
+            refreshMICBdGrid();
+            refreshFilmsBdGrid();
+            refreshCinemasBdGrid();
+            refreshCalendarBdGrid();
+            refreshUsersBdGrid();
         }
 
 
@@ -67,24 +74,6 @@ namespace PosterWPF.Sections
         private void Films_Loaded(object sender, RoutedEventArgs e)
         {
             refreshFilmsBdGrid();
-        }
-
-        private void Users_Loaded(object sender, RoutedEventArgs e)
-        {
-            List<int> Id = new List<int>();
-            List<string> Mail = new List<string>();
-            List<string> Name = new List<string>();
-            List<string> Password = new List<string>();
-
-            bdClassGet.GetAllUsers(Mail, Name, Password, Id);
-
-            List<UsersClass> usersClasses = new List<UsersClass>();
-            for (int iterator = 0; iterator < Id.Count; iterator++)
-            {
-                usersClasses.Add(new UsersClass(Id[iterator], Mail[iterator], Name[iterator], Password[iterator]));
-            }
-
-            UsersBdGrid.ItemsSource = usersClasses;
         }
 
         /////////////////////////////////Films event ///////////////////////////////////////////////////////////
@@ -302,22 +291,238 @@ namespace PosterWPF.Sections
 
         private void MICBdFrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            try
+            {
+                if (MICBdFrid.SelectedItem != null)
+                {
+                    MICClass mic = MICBdFrid.SelectedItem as MICClass;
 
+                    MICDate.SelectedDate = mic.Date;
+                    int indexFilm = FilmIdName.Items.IndexOf(mic.FilmName);
+                    FilmIdName.SelectedItem = FilmIdName.Items.GetItemAt(indexFilm);
+                    int indexCinema = CinemaIdName.Items.IndexOf(mic.CinemaName);
+                    CinemaIdName.SelectedItem = CinemaIdName.Items.GetItemAt(indexCinema);
+                    MICPrice.Text = mic.Price.ToString();
+                    MICTime.Text = mic.Time;
+                    MICFreeSpaces.Text = mic.FreeSpaces.ToString();
+                    MICReservedSpaces.Text = mic.FreeSpaces.ToString();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void MICAdd_Click(object sender, RoutedEventArgs e)
         {
-            refreshMICBdGrid();
+            try
+            { 
+                bdClassAdd.AddMIC(1, (DateTime)MICDate.SelectedDate, FilmIdName.SelectedItem.ToString(), CinemaIdName.SelectedItem.ToString(), Int32.Parse(MICPrice.Text), MICTime.Text, Int32.Parse(MICFreeSpaces.Text), Int32.Parse(MICReservedSpaces.Text));
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                refreshMICBdGrid();
+            }
         }
 
         private void MICSave_Click(object sender, RoutedEventArgs e)
         {
-            refreshMICBdGrid();
+            try
+            {
+                MICClass mic = MICBdFrid.SelectedItem as MICClass;
+                bdClassUpdate.UpdateMIC(mic.Id, (DateTime)MICDate.SelectedDate, FilmIdName.SelectedItem.ToString(), CinemaIdName.SelectedItem.ToString(), Int32.Parse(MICPrice.Text), MICTime.Text, Int32.Parse(MICFreeSpaces.Text), Int32.Parse(MICReservedSpaces.Text));
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                refreshMICBdGrid();
+            }
+            
         }
 
         private void MICDelete_Click(object sender, RoutedEventArgs e)
         {
-            refreshMICBdGrid();
+            try
+            {
+                if (MICBdFrid.SelectedItem != null)
+                {
+                    MICClass mic = MICBdFrid.SelectedItem as MICClass;
+
+                    bdClassDelete.DeleteMIC(mic.Id);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                refreshMICBdGrid();
+            }
+            
+        }
+
+
+        /////////////////////////////////////Calendar event/////////////////////////////////////////////////////
+        private void CalendarAdd_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                bdClassAdd.AddDate(1, (DateTime)CalendarDate.SelectedDate);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                refreshCalendarBdGrid();
+            }
+        }
+
+        private void CalendarSave_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                CalendarClass calendarClass = CalendarBdFrid.SelectedItem as CalendarClass;
+                bdClassUpdate.UpdateDate(calendarClass.Id, (DateTime)CalendarDate.SelectedDate);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                refreshCalendarBdGrid();
+            }
+        }
+
+        private void CalendarDelete_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (CalendarBdFrid.SelectedItem != null)
+                {
+                    CalendarClass calendarClass = CalendarBdFrid.SelectedItem as CalendarClass;
+
+                    bdClassDelete.DeleteDate(calendarClass.Id);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                refreshCalendarBdGrid();
+            }
+        }
+
+        private void CalendarBdFrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (CalendarBdFrid.SelectedItem != null)
+                {
+                    CalendarClass calendarClass = CalendarBdFrid.SelectedItem as CalendarClass;
+                    CalendarDate.SelectedDate = calendarClass.Date;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Calendar_Loaded(object sender, RoutedEventArgs e)
+        {
+            refreshCalendarBdGrid();
+        }
+
+        ///////////////////////////////////////Users event///////////////////////////////////////
+        private void Users_Loaded(object sender, RoutedEventArgs e)
+        {
+            refreshUsersBdGrid();
+        }
+
+        private void UsersBdGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (UsersBdGrid.SelectedItem != null)
+                {
+                    UsersClass usersClass = UsersBdGrid.SelectedItem as UsersClass;
+
+                    UsersName.Text = usersClass.Name;
+                    UsersMail.Text = usersClass.Mail;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void UsersAdd_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                bdClassAdd.AddUser(1, UsersMail.Text, UsersName.Text, User.HashPassword(UsersPassword.Text));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                refreshUsersBdGrid();
+            }
+        }
+
+        private void UsersSave_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                UsersClass usersClass = UsersBdGrid.SelectedItem as UsersClass;
+                bdClassUpdate.UpdateUser(usersClass.Id, UsersMail.Text, UsersName.Text, User.HashPassword(UsersPassword.Text));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                refreshUsersBdGrid();
+            }
+        }
+
+        private void UsersDelete_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (UsersBdGrid.SelectedItem != null)
+                {
+                    UsersClass usersClass = UsersBdGrid.SelectedItem as UsersClass;
+
+                    bdClassDelete.DeleteDate(usersClass.Id);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                refreshUsersBdGrid();
+            }
         }
     }
 }

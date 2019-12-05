@@ -20,6 +20,8 @@
             <TextBlock FontSize="24" FontFamily="Times New Roman">ExhibitionsInExhibitionCenters</TextBlock>
             <TextBlock FontSize="24" FontFamily="Times New Roman">Calendar</TextBlock>
             <TextBlock FontSize="24" FontFamily="Times New Roman">BookedMovies</TextBlock>
+            <TextBlock FontSize="24" FontFamily="Times New Roman">BookedExhibitions</TextBlock>
+            <TextBlock FontSize="24" FontFamily="Times New Roman">BookedConcerts</TextBlock>
             <TextBlock FontSize="24" FontFamily="Times New Roman">Users</TextBlock>
         </ComboBox>
         <Grid Loaded="Films_Loaded" x:Name="Films" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
@@ -50,7 +52,7 @@
             <TextBox x:Name="CinemasAddress" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="120,257,0,0" TextWrapping="Wrap" Text="Address" VerticalAlignment="Top" Width="225"/>
 
         </Grid>
-        <Grid x:Name="MoviesInCinemas" Loaded="MoviesInCinemas_Loaded"  Visibility="Visible" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
+        <Grid x:Name="MoviesInCinemas" Loaded="MoviesInCinemas_Loaded"  Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
             <DataGrid SelectionChanged="MICBdFrid_SelectionChanged" ScrollViewer.CanContentScroll="True" Height="150" x:Name="MICBdFrid" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Left" MaxHeight="150" Margin="0,10,0,0" VerticalAlignment="Top">
             </DataGrid>
             <Button Name="MICAdd" FontFamily="Times New Roman" Content="Add new" Margin="10,180,479,199" Click="MICAdd_Click"/>
@@ -72,11 +74,27 @@
         <Grid x:Name="Exhibitions" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
         <Grid x:Name="ExhibitionCenters" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
         <Grid x:Name="ExhibitionsInExhibitionCenters" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
-        <Grid x:Name="Calendar" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
-        <Grid x:Name="BookedMovies" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
-        <Grid x:Name="Users" Loaded="Users_Loaded" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
-            <DataGrid ScrollViewer.CanContentScroll="True" MaxHeight="150" x:Name="UsersBdGrid" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" >
+        <Grid x:Name="Calendar" Loaded="Calendar_Loaded" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
+            <DataGrid SelectionChanged="CalendarBdFrid_SelectionChanged" ScrollViewer.CanContentScroll="True" Height="150" x:Name="CalendarBdFrid" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Left" MaxHeight="150" Margin="0,10,0,0" VerticalAlignment="Top">
             </DataGrid>
+            <Button Name="CalendarAdd" FontFamily="Times New Roman" Content="Add new" Margin="10,180,479,199" Click="CalendarAdd_Click"/>
+            <Button Name="CalendarSave" FontFamily="Times New Roman" Content="Save" Margin="120,180,359,199" Click="CalendarSave_Click"/>
+            <Button Name="CalendarDelete" FontFamily="Times New Roman" Content="Delete" Margin="240,180,249,199" Click="CalendarDelete_Click"/>
+            <Calendar x:Name="CalendarDate" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top"/>
+        </Grid>
+        <Grid x:Name="BookedMovies" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
+        <Grid x:Name="BookedConcerts" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
+        <Grid x:Name="BookedExhibitions" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
+        <Grid x:Name="Users" Loaded="Users_Loaded" Visibility="Visible" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
+            <DataGrid SelectionChanged="UsersBdGrid_SelectionChanged" ScrollViewer.CanContentScroll="True" Height="150" MaxHeight="150" x:Name="UsersBdGrid" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" >
+            </DataGrid>
+            <Button Name="UsersAdd" FontFamily="Times New Roman" Content="Add new" Margin="10,180,479,199" Click="UsersAdd_Click"/>
+            <Button Name="UsersSave" FontFamily="Times New Roman" Content="Save" Margin="120,180,359,199" Click="UsersSave_Click"/>
+            <Button Name="UsersDelete" FontFamily="Times New Roman" Content="Delete" Margin="240,180,249,199" Click="UsersDelete_Click"/>
+            <TextBox x:Name="UsersMail" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="10,216,0,0" TextWrapping="Wrap" Text="E-mail" VerticalAlignment="Top" Width="225"/>
+            <TextBox x:Name="UsersName" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="10,293,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="225"/>
+            <TextBox x:Name="UsersPassword" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="10,257,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="225"/>
+
         </Grid>
     </Grid>
 </Window>

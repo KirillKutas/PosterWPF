@@ -92,6 +92,7 @@
     <Compile Include="BdClassDelete.cs" />
     <Compile Include="BdClassGet.cs" />
     <Compile Include="BdClassUpdate.cs" />
+    <Compile Include="Models\CalendarClass.cs" />
     <Compile Include="Models\CinemasClass.cs" />
     <Compile Include="Models\FilmsClass.cs" />
     <Compile Include="Models\MICClass.cs" />

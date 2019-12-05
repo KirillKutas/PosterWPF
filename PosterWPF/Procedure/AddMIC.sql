@@ -15,17 +15,44 @@ if(select count(Id) from MoviesInCinemas where Id = @count) = 0
 end;
 return @count
 end;
+go
+create function SelectIdFilm(@newFilmsName varchar(50))
+returns int
+as
+begin
+  declare @Id int
+   select @Id = Id from films where [Name] = @newFilmsName
+  return @Id
+end;
+go
+create function SelectIdCinema(@newCinemasName varchar(50))
+returns int
+as
+begin
+  declare @Id int
+   select @Id = Id from Cinemas where [Name] = @newCinemasName
+  return @Id
+end;
+go
+create function SelectIdDate(@newDate date)
+returns int
+as
+begin
+  declare @Id int
+   select @Id = Id from Calendar where [Date] = @newDate
+  return @Id
+end;
 go 
 create procedure AddMIC
 @newId int, 
-@newDateId int,
-@newFilmsId int,
-@newCinemasId int,
+@newDate date,
+@newFilmsName varchar(50),
+@newCinemasName varchar(50),
 @newPrice int,
 @newTime varchar(50),
 @newFreeSpaces int,
 @newReservedSpaces int as
 begin
   insert into MoviesInCinemas(Id,[DateID],[FilmsId],[CinemasId],[Price],[Time],[FreeSpaces],[ReservedSpaces])
-  values(dbo.CheckIdFilm(@newId), @newDateId, @newFilmsId, @newCinemasId, @newPrice, @newTime, @newFreeSpaces, @newReservedSpaces)
+  values(dbo.CheckIdMIC(@newId), dbo.SelectIdDate(@newDate), dbo.SelectIdFilm(@newFilmsName), dbo.SelectIdCinema(@newCinemasName), @newPrice, @newTime, @newFreeSpaces, @newReservedSpaces)
 end;

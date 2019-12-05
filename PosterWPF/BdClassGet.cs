@@ -128,5 +128,26 @@ namespace PosterWPF
                 reader.Close();
             }
         }
+
+        public void GetAllDates(List<int> Id, List<DateTime> Date)
+        {
+            string sqlExpression = "SelectAllDates";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Id.Add(reader.GetInt32(0));
+                        Date.Add(reader.GetDateTime(1));
+                    }
+                }
+                reader.Close();
+            }
+        }
     }
 }

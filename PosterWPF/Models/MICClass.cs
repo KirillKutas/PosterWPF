@@ -8,14 +8,14 @@ namespace PosterWPF.Models
 {
     class MICClass
     {
-        public int Id;
-        public DateTime Date;
-        public string FilmName;
-        public string CinemaName;
-        public int Price;
-        public string Time;
-        public int FreeSpaces;
-        public int ReservedSpaces;
+        public int Id { get; set; }
+        public DateTime Date { get; set; }
+        public string FilmName { get; set; }
+        public string CinemaName { get; set; }
+        public int Price { get; set; }
+        public string Time { get; set; }
+        public int FreeSpaces { get; set; }
+        public int ReservedSpaces { get; set; }
 
         public MICClass(int Id, DateTime Date, string FilmName, string CinemaName, int Price, string Time, int FreeSpaces, int ReservedSpaces)
         {
