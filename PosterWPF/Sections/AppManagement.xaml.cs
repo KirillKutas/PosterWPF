@@ -67,6 +67,8 @@ namespace PosterWPF.Sections
             refreshCinemasBdGrid();
             refreshCalendarBdGrid();
             refreshUsersBdGrid();
+            refreshBKBdGrid();
+            refreshConcertsBdGrid();
         }
 
 
@@ -512,7 +514,7 @@ namespace PosterWPF.Sections
                 {
                     UsersClass usersClass = UsersBdGrid.SelectedItem as UsersClass;
 
-                    bdClassDelete.DeleteDate(usersClass.Id);
+                    bdClassDelete.DeleteUser(usersClass.Id);
                 }
             }
             catch (Exception ex)
@@ -522,6 +524,217 @@ namespace PosterWPF.Sections
             finally
             {
                 refreshUsersBdGrid();
+            }
+        }
+
+        ////////////////////////////////BookedMovies//////////////////////////////////////////////////
+        private void BookedMoviesBdGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (BookedMoviesBdGrid.SelectedItem != null)
+                {
+                    BKClass bKClass = BookedMoviesBdGrid.SelectedItem as BKClass;
+
+                    BKFilm.Text = bKClass.Film;
+                    BKMail.Text = bKClass.UserMail;
+                    BKDate.SelectedDate = bKClass.Date;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BookedMovies_Loaded(object sender, RoutedEventArgs e)
+        {
+            refreshBKBdGrid();
+        }
+
+        private void BKAdd_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                bdClassAdd.AddBK(1,BKMail.Text, BKFilm.Text, (DateTime)BKDate.SelectedDate);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                refreshBKBdGrid();
+            }
+        }
+
+        private void BKSave_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                BKClass bkClass = BookedMoviesBdGrid.SelectedItem as BKClass;
+                bdClassUpdate.UpdateBK(bkClass.Id, BKMail.Text, BKFilm.Text, (DateTime)BKDate.SelectedDate);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                refreshBKBdGrid();
+            }
+        }
+
+        private void BKDelete_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (BookedMoviesBdGrid.SelectedItem != null)
+                {
+                    BKClass bKClass = BookedMoviesBdGrid.SelectedItem as BKClass;
+
+                    bdClassDelete.DeleteBK(bKClass.Id);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                refreshBKBdGrid();
+            }
+        }
+
+        ///////////////////////////////////Concerts event //////////////////////////////////////////////
+        private void ConcertsBdGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (ConcertsBdGrid.SelectedItem != null)
+                {
+                    ConcertsClass concertsClass = ConcertsBdGrid.SelectedItem as ConcertsClass;
+
+                    ConcertsName.Text = concertsClass.Name;
+                    ConcertsGenre.Text = concertsClass.Genre;
+                    ConcertsTime.Text = concertsClass.Time;
+                    ConcertsDescription.Text = File.ReadAllText(concertsClass.Description);
+                    imageByte = concertsClass.Photo;
+
+                    BitmapImage image = new BitmapImage();
+                    image.BeginInit();
+                    image.StreamSource = new MemoryStream(concertsClass.Photo);
+                    image.EndInit();
+
+                    ConcertsImage.Source = image;
+
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Concerts_Loaded(object sender, RoutedEventArgs e)
+        {
+            refreshConcertsBdGrid();
+        }
+
+        private void ConcertsAdd_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string pathDescription = "../../Description/" + ConcertsName.Text + "C" + ".txt";
+                File.WriteAllText(pathDescription, ConcertsDescription.Text);
+                byte[] imagecode = null;
+                if (imageByte == null)
+                {
+
+                    ImageToBD(ref imagecode);
+                }
+                else
+                {
+                    imagecode = imageByte;
+                }
+
+                bdClassAdd.AddConcerts(1, ConcertsName.Text, pathDescription, ConcertsTime.Text, imagecode, ConcertsGenre.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                refreshConcertsBdGrid();
+            }
+        }
+
+        private void CocnertsSave_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string pathDescription = "../../Description/" + FilmsName.Text + "C" + ".txt";
+                File.WriteAllText(pathDescription, ConcertsDescription.Text);
+                ConcertsClass concertsClass = ConcertsBdGrid.SelectedItem as ConcertsClass;
+                byte[] imagecode = null;
+                if (imageByte == null)
+                {
+
+                    ImageToBD(ref imagecode);
+                }
+                else
+                {
+                    imagecode = imageByte;
+                }
+
+                bdClassUpdate.UpdateConcerts(concertsClass.Id, ConcertsName.Text, pathDescription, ConcertsTime.Text, imagecode, ConcertsGenre.Text);
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                refreshConcertsBdGrid();
+            }
+        }
+
+        private void ConcertsDelete_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (ConcertsBdGrid.SelectedItem != null)
+                {
+                    ConcertsClass concerts = ConcertsBdGrid.SelectedItem as ConcertsClass;
+
+                    bdClassDelete.DeleteConcerts(concerts.Id);
+                    string pathDescription = "../../Description/" + concerts.Name + "C" + ".txt";
+                    File.Delete(pathDescription);                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                refreshConcertsBdGrid();
+            }
+        }
+
+        private void ConcertsChangeImage_Click(object sender, RoutedEventArgs e)
+        {
+            imageByte = null;
+            var openDialog = new OpenFileDialog();
+            openDialog.Filter = "Image files (*.BMP, *.JPG, *.GIF, *.TIF, *.PNG, *.ICO, *.EMF, *.WMF)|*.bmp;*.jpg;*.gif; *.tif; *.png; *.ico; *.emf; *.wmf";
+
+            if (openDialog.ShowDialog() == true)
+            {
+                ImageSource = openDialog.FileName;
+                ConcertsImage.Stretch = Stretch.Fill;
+                ConcertsImage.Source = new BitmapImage(new Uri(openDialog.FileName));
             }
         }
     }

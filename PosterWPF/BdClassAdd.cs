@@ -178,5 +178,70 @@ namespace PosterWPF
                 MessageBox.Show(ex.Message);
             }
         }
+
+        public void AddBK(int Id, string UserMail, string Film, DateTime Date)
+        {
+            try
+            {
+                string sqlExpression = "AddBK";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    SqlParameter IdParameter = new SqlParameter("@newId", Id);
+                    SqlParameter UserMailParameter = new SqlParameter("@newUserMail", UserMail);
+                    SqlParameter FilmParameter = new SqlParameter("@newFilmsName", Film);
+                    SqlParameter DateParameter = new SqlParameter("@newDate", Date);
+
+                    command.Parameters.Add(IdParameter);
+                    command.Parameters.Add(DateParameter);
+                    command.Parameters.Add(FilmParameter);
+                    command.Parameters.Add(UserMailParameter);
+
+                    var result = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void AddConcerts(int Id, string Name, string Description, string Time, byte[] Photo, string Genre)
+        {
+            try
+            {
+                string sqlExpression = "AddConcerts";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    SqlParameter IdParameter = new SqlParameter("@newId", Id);
+                    SqlParameter NameParameter = new SqlParameter("@newName", Name);
+                    SqlParameter DescriptionParameter = new SqlParameter("@newDescription", Description);
+                    SqlParameter PhotoParameter = new SqlParameter("@newPhoto", Photo);
+                    SqlParameter GenreParameter = new SqlParameter("@newGenre", Genre);
+                    SqlParameter TimeParameter = new SqlParameter("@newTime", Time);
+
+
+                    command.Parameters.Add(IdParameter);
+                    command.Parameters.Add(NameParameter);
+                    command.Parameters.Add(DescriptionParameter);
+                    command.Parameters.Add(PhotoParameter);
+                    command.Parameters.Add(GenreParameter);
+                    command.Parameters.Add(TimeParameter);
+
+                    var result = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

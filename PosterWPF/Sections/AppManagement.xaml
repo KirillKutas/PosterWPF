@@ -68,8 +68,24 @@
             <TextBox x:Name="MICReservedSpaces" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="350,221,0,0" TextWrapping="Wrap" Text="Reserved spaces" VerticalAlignment="Top" Width="225"/>
 
         </Grid>
-        <Grid x:Name="Concerts" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
-        <Grid x:Name="ConcertHalls" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
+        <Grid x:Name="Concerts" Loaded="Concerts_Loaded" Visibility="Visible" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
+            <DataGrid SelectionChanged="ConcertsBdGrid_SelectionChanged"  ScrollViewer.CanContentScroll="True" Height="150" x:Name="ConcertsBdGrid" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Left" MaxHeight="150" Margin="0,10,0,0" VerticalAlignment="Top">
+            </DataGrid>
+            <Button Name="ConcertsAdd" FontFamily="Times New Roman" Content="Add new" Margin="10,180,479,199" Click="ConcertsAdd_Click"/>
+            <Button Name="CocnertsSave" FontFamily="Times New Roman" Content="Save" Margin="120,180,359,199" Click="CocnertsSave_Click"/>
+            <Button Name="ConcertsDelete" FontFamily="Times New Roman" Content="Delete" Margin="240,180,249,199" Click="ConcertsDelete_Click"/>
+            <Image Name="ConcertsImage" HorizontalAlignment="Left" Height="119" Margin="10,216,0,0" VerticalAlignment="Top" Width="100">
+            </Image>
+            <Button x:Name="ConcertsChangeImage" Content="Change Image" HorizontalAlignment="Left" Margin="10,340,0,0" VerticalAlignment="Top" Width="100" Height="33" Click="ConcertsChangeImage_Click"/>
+            <TextBox x:Name="ConcertsName" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="120,216,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="225"/>
+            <TextBox x:Name="ConcertsGenre" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="120,257,0,0" TextWrapping="Wrap" Text="Genre" VerticalAlignment="Top" Width="225"/>
+            <TextBox x:Name="ConcertsTime" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="120,298,0,0" TextWrapping="Wrap" Text="Time" VerticalAlignment="Top" Width="225"/>
+            <TextBox x:Name="ConcertsDescription" FontSize="16" FontFamily="Times New Roman" HorizontalAlignment="Left" Height="196" Margin="350,180,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Width="234"/>
+
+        </Grid>
+        <Grid x:Name="ConcertHalls" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
+           
+        </Grid>
         <Grid x:Name="ConcertsInConcertHalls" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
         <Grid x:Name="Exhibitions" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
         <Grid x:Name="ExhibitionCenters" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
@@ -82,10 +98,19 @@
             <Button Name="CalendarDelete" FontFamily="Times New Roman" Content="Delete" Margin="240,180,249,199" Click="CalendarDelete_Click"/>
             <Calendar x:Name="CalendarDate" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top"/>
         </Grid>
-        <Grid x:Name="BookedMovies" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
+        <Grid x:Name="BookedMovies" Loaded="BookedMovies_Loaded"  Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
+            <DataGrid SelectionChanged="BookedMoviesBdGrid_SelectionChanged"  ScrollViewer.CanContentScroll="True" Height="150" MaxHeight="150" x:Name="BookedMoviesBdGrid" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" >
+            </DataGrid>
+            <Button Name="BKAdd" FontFamily="Times New Roman" Content="Add new" Margin="10,180,479,199" Click="BKAdd_Click"/>
+            <Button Name="BKSave" FontFamily="Times New Roman" Content="Save" Margin="120,180,359,199" Click="BKSave_Click"/>
+            <Button Name="BKDelete" FontFamily="Times New Roman" Content="Delete" Margin="240,180,249,199" Click="BKDelete_Click"/>
+            <Calendar x:Name="BKDate" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="BKMail" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="194,220,0,0" TextWrapping="Wrap" Text="E-mail" VerticalAlignment="Top" Width="225"/>
+            <TextBox x:Name="BKFilm" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="194,261,0,0" TextWrapping="Wrap" Text="Film name" VerticalAlignment="Top" Width="225"/>
+        </Grid>
         <Grid x:Name="BookedConcerts" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
         <Grid x:Name="BookedExhibitions" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
-        <Grid x:Name="Users" Loaded="Users_Loaded" Visibility="Visible" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
+        <Grid x:Name="Users" Loaded="Users_Loaded" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
             <DataGrid SelectionChanged="UsersBdGrid_SelectionChanged" ScrollViewer.CanContentScroll="True" Height="150" MaxHeight="150" x:Name="UsersBdGrid" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" >
             </DataGrid>
             <Button Name="UsersAdd" FontFamily="Times New Roman" Content="Add new" Margin="10,180,479,199" Click="UsersAdd_Click"/>

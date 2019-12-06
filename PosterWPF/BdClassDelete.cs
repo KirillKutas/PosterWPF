@@ -141,5 +141,57 @@ namespace PosterWPF
                 MessageBox.Show(ex.Message);
             }
         }
+
+        public void DeleteBK(int Id)
+        {
+            try
+            {
+                string sqlExpression = "DeleteBKById";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    SqlParameter IdParameter = new SqlParameter("@deleteId", Id);
+
+                    command.Parameters.Add(IdParameter);
+
+
+                    var result = command.ExecuteScalar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void DeleteConcerts(int Id)
+        {
+            try
+            {
+                string sqlExpression = "DeleteConcertsById";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    SqlParameter IdParameter = new SqlParameter("@deleteId", Id);
+
+                    command.Parameters.Add(IdParameter);
+
+
+                    var result = command.ExecuteScalar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

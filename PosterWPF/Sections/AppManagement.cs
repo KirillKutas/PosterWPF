@@ -133,6 +133,40 @@ namespace PosterWPF.Sections
 
             UsersBdGrid.ItemsSource = usersClasses;
         }
+        void refreshBKBdGrid()
+        {
+            List<int> Id = new List<int>();
+            List<string> UserMail = new List<string>();
+            List<string> Film = new List<string>();
+            List<DateTime> Date = new List<DateTime>();
+
+            bdClassGet.GetAllBK(Id, UserMail, Film, Date);
+            List<BKClass> bKClasses = new List<BKClass>();
+            for(int iterator = 0; iterator<Id.Count; iterator++)
+            {
+                bKClasses.Add(new BKClass(Id[iterator], UserMail[iterator], Film[iterator], Date[iterator]));
+            }
+            BookedMoviesBdGrid.ItemsSource = bKClasses;
+        }
+        void refreshConcertsBdGrid()
+        {
+            List<int> Id = new List<int>();
+            List<string> Name = new List<string>();
+            List<string> Description = new List<string>();
+            List<byte[]> Photo = new List<byte[]>();
+            List<string> Genre = new List<string>();
+            List<string> Time = new List<string>();
+
+            bdClassGet.GetAllConcerts(Id, Name, Description, Photo, Genre, Time);
+
+            List<ConcertsClass> concertsClasses = new List<ConcertsClass>();
+            for (int iterator = 0; iterator < Id.Count; iterator++)
+            {
+                concertsClasses.Add(new ConcertsClass(Id[iterator], Name[iterator], Description[iterator], Time[iterator], Photo[iterator], Genre[iterator]));
+            }
+
+            ConcertsBdGrid.ItemsSource = concertsClasses;
+        }
         void ImageToBD(ref byte[] imagecode)
         {
             FileStream fs = new FileStream(ImageSource, FileMode.Open, FileAccess.Read);
