@@ -35,15 +35,15 @@ namespace PosterWPF
                     command.Parameters.Add(PasswordParameter);
 
                     var result = command.ExecuteScalar();
-                   
+
                 }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-           
+
         }
 
         public void AddFilm(int Id, string Name, string DescriptionsAndActors, byte[] Photo, string Genre, string Country, string Duration)
@@ -106,11 +106,11 @@ namespace PosterWPF
                     var result = command.ExecuteNonQuery();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
 
         public void AddMIC(int Id, DateTime Date, string FilmName, string CinemaName, int Price, string Time, int FreeSpaces, int ReservedSpaces)
@@ -146,11 +146,11 @@ namespace PosterWPF
                     var result = command.ExecuteNonQuery();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
 
         public void AddDate(int Id, DateTime Date)
@@ -234,6 +234,231 @@ namespace PosterWPF
                     command.Parameters.Add(PhotoParameter);
                     command.Parameters.Add(GenreParameter);
                     command.Parameters.Add(TimeParameter);
+
+                    var result = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void AddConcertHalls(int Id, string Name, string Address, byte[] Photo)
+        {
+            try
+            {
+                string sqlExpression = "AddConcertHalls";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    SqlParameter IdParameter = new SqlParameter("@newId", Id);
+                    SqlParameter NameParameter = new SqlParameter("@newName", Name);
+                    SqlParameter AddressParameter = new SqlParameter("@newAddress", Address);
+                    SqlParameter PhotoParameter = new SqlParameter("@newPhoto", Photo);
+
+                    command.Parameters.Add(IdParameter);
+                    command.Parameters.Add(AddressParameter);
+                    command.Parameters.Add(NameParameter);
+                    command.Parameters.Add(PhotoParameter);
+
+                    var result = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void AddCICH(int Id, DateTime Date, string FilmName, string CinemaName, int Price, int FreeSpaces, int ReservedSpaces)
+        {
+            try
+            {
+                string sqlExpression = "AddCICH";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    SqlParameter IdParameter = new SqlParameter("@newId", Id);
+                    SqlParameter DateParameter = new SqlParameter("@newDate", Date);
+                    SqlParameter FilmNameParameter = new SqlParameter("@newConcertsName", FilmName);
+                    SqlParameter CinemaNameParameter = new SqlParameter("@newConcertHallsName", CinemaName);
+                    SqlParameter PriceParameter = new SqlParameter("@newPrice", Price);
+                    SqlParameter FreeSpacesParameter = new SqlParameter("@newFreeSpaces", FreeSpaces);
+                    SqlParameter ReservedSpacesParameter = new SqlParameter("@newReservedSpaces", ReservedSpaces);
+
+
+                    command.Parameters.Add(IdParameter);
+                    command.Parameters.Add(DateParameter);
+                    command.Parameters.Add(FilmNameParameter);
+                    command.Parameters.Add(CinemaNameParameter);
+                    command.Parameters.Add(PriceParameter);
+                    command.Parameters.Add(FreeSpacesParameter);
+                    command.Parameters.Add(ReservedSpacesParameter);
+
+                    var result = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void AddEIEC(int Id, DateTime Date, string Exhibitions, string EhibitionCenters, int Price, int FreeSpaces, int ReservedSpaces)
+        {
+            try
+            {
+                string sqlExpression = "AddEIEC";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    SqlParameter IdParameter = new SqlParameter("@newId", Id);
+                    SqlParameter DateParameter = new SqlParameter("@newDate", Date);
+                    SqlParameter FilmNameParameter = new SqlParameter("@newExhibitionsName", Exhibitions);
+                    SqlParameter CinemaNameParameter = new SqlParameter("@newExhibitionCentersName", EhibitionCenters);
+                    SqlParameter PriceParameter = new SqlParameter("@newPrice", Price);
+                    SqlParameter FreeSpacesParameter = new SqlParameter("@newFreeSpaces", FreeSpaces);
+                    SqlParameter ReservedSpacesParameter = new SqlParameter("@newReservedSpaces", ReservedSpaces);
+
+
+                    command.Parameters.Add(IdParameter);
+                    command.Parameters.Add(DateParameter);
+                    command.Parameters.Add(FilmNameParameter);
+                    command.Parameters.Add(CinemaNameParameter);
+                    command.Parameters.Add(PriceParameter);
+                    command.Parameters.Add(FreeSpacesParameter);
+                    command.Parameters.Add(ReservedSpacesParameter);
+
+                    var result = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void AddBE(int Id, string UserMail, string Exhibition, DateTime Date)
+        {
+            try
+            {
+                string sqlExpression = "AddBE";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    SqlParameter IdParameter = new SqlParameter("@newId", Id);
+                    SqlParameter UserMailParameter = new SqlParameter("@newUserMail", UserMail);
+                    SqlParameter FilmParameter = new SqlParameter("@newExhibitionsName", Exhibition);
+                    SqlParameter DateParameter = new SqlParameter("@newDate", Date);
+
+                    command.Parameters.Add(IdParameter);
+                    command.Parameters.Add(DateParameter);
+                    command.Parameters.Add(FilmParameter);
+                    command.Parameters.Add(UserMailParameter);
+
+                    var result = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void AddBC(int Id, string UserMail, string Exhibition, DateTime Date)
+        {
+            try
+            {
+                string sqlExpression = "AddBC";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    SqlParameter IdParameter = new SqlParameter("@newId", Id);
+                    SqlParameter UserMailParameter = new SqlParameter("@newUserMail", UserMail);
+                    SqlParameter FilmParameter = new SqlParameter("@newConcertsName", Exhibition);
+                    SqlParameter DateParameter = new SqlParameter("@newDate", Date);
+
+                    command.Parameters.Add(IdParameter);
+                    command.Parameters.Add(DateParameter);
+                    command.Parameters.Add(FilmParameter);
+                    command.Parameters.Add(UserMailParameter);
+
+                    var result = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void AddExhibition(int Id, string Name, string Description, string Time, byte[] Photo, string Genre)
+        {
+            try
+            {
+                string sqlExpression = "AddExhibitions";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    SqlParameter IdParameter = new SqlParameter("@newId", Id);
+                    SqlParameter NameParameter = new SqlParameter("@newName", Name);
+                    SqlParameter DescriptionParameter = new SqlParameter("@newDescription", Description);
+                    SqlParameter PhotoParameter = new SqlParameter("@newPhoto", Photo);
+                    SqlParameter GenreParameter = new SqlParameter("@newGenre", Genre);
+                    SqlParameter TimeParameter = new SqlParameter("@newTime", Time);
+
+
+                    command.Parameters.Add(IdParameter);
+                    command.Parameters.Add(NameParameter);
+                    command.Parameters.Add(DescriptionParameter);
+                    command.Parameters.Add(PhotoParameter);
+                    command.Parameters.Add(GenreParameter);
+                    command.Parameters.Add(TimeParameter);
+
+                    var result = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void AddExhibitionCenters(int Id, string Name, string Address, byte[] Photo)
+        {
+            try
+            {
+                string sqlExpression = "AddExhibitionCenters";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    SqlParameter IdParameter = new SqlParameter("@newId", Id);
+                    SqlParameter NameParameter = new SqlParameter("@newName", Name);
+                    SqlParameter AddressParameter = new SqlParameter("@newAddress", Address);
+                    SqlParameter PhotoParameter = new SqlParameter("@newPhoto", Photo);
+
+                    command.Parameters.Add(IdParameter);
+                    command.Parameters.Add(AddressParameter);
+                    command.Parameters.Add(NameParameter);
+                    command.Parameters.Add(PhotoParameter);
 
                     var result = command.ExecuteNonQuery();
                 }

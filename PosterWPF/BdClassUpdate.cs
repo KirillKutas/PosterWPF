@@ -84,7 +84,7 @@ namespace PosterWPF
         {
             try
             {
-                string sqlExpression = "AddMIC";
+                string sqlExpression = "ChangeMIC";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
@@ -231,6 +231,234 @@ namespace PosterWPF
                     command.Parameters.Add(PhotoParameter);
                     command.Parameters.Add(GenreParameter);
                     command.Parameters.Add(TimeParameter);
+
+                    var result = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void UpdateConcertHalls(int Id, string Name, string Address, byte[] Photo)
+        {
+            try
+            {
+                string sqlExpression = "ChangeConcertHalls";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+
+                    SqlParameter IdParameter = new SqlParameter("@Id", Id);
+                    SqlParameter NameParameter = new SqlParameter("@newName", Name);
+                    SqlParameter AddressParameter = new SqlParameter("@newAddress", Address);
+                    SqlParameter PhotoParameter = new SqlParameter("@newPhoto", Photo);
+
+                    command.Parameters.Add(IdParameter);
+                    command.Parameters.Add(AddressParameter);
+                    command.Parameters.Add(NameParameter);
+                    command.Parameters.Add(PhotoParameter);
+
+                    var result = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void UpdateCICH(int Id, DateTime Date, string FilmName, string CinemaName, int Price, int FreeSpaces, int ReservedSpaces)
+        {
+            try
+            {
+                string sqlExpression = "ChangeCICH";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    SqlParameter IdParameter = new SqlParameter("@Id", Id);
+                    SqlParameter DateParameter = new SqlParameter("@newDate", Date);
+                    SqlParameter FilmNameParameter = new SqlParameter("@newConcertsName", FilmName);
+                    SqlParameter CinemaNameParameter = new SqlParameter("@newConcertHallsName", CinemaName);
+                    SqlParameter PriceParameter = new SqlParameter("@newPrice", Price);
+                    SqlParameter FreeSpacesParameter = new SqlParameter("@newFreeSpaces", FreeSpaces);
+                    SqlParameter ReservedSpacesParameter = new SqlParameter("@newReservedSpaces", ReservedSpaces);
+
+
+                    command.Parameters.Add(IdParameter);
+                    command.Parameters.Add(DateParameter);
+                    command.Parameters.Add(FilmNameParameter);
+                    command.Parameters.Add(CinemaNameParameter);
+                    command.Parameters.Add(PriceParameter);
+                    command.Parameters.Add(FreeSpacesParameter);
+                    command.Parameters.Add(ReservedSpacesParameter);
+
+                    var result = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void UpdateEIEC(int Id, DateTime Date, string Exhibitions, string ExhibitionCenters, int Price, int FreeSpaces, int ReservedSpaces)
+        {
+            try
+            {
+                string sqlExpression = "ChangeEIEC";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    SqlParameter IdParameter = new SqlParameter("@Id", Id);
+                    SqlParameter DateParameter = new SqlParameter("@newDate", Date);
+                    SqlParameter FilmNameParameter = new SqlParameter("@newExhibitionsName", Exhibitions);
+                    SqlParameter CinemaNameParameter = new SqlParameter("@newExhibitionCentersName", ExhibitionCenters);
+                    SqlParameter PriceParameter = new SqlParameter("@newPrice", Price);
+                    SqlParameter FreeSpacesParameter = new SqlParameter("@newFreeSpaces", FreeSpaces);
+                    SqlParameter ReservedSpacesParameter = new SqlParameter("@newReservedSpaces", ReservedSpaces);
+
+
+                    command.Parameters.Add(IdParameter);
+                    command.Parameters.Add(DateParameter);
+                    command.Parameters.Add(FilmNameParameter);
+                    command.Parameters.Add(CinemaNameParameter);
+                    command.Parameters.Add(PriceParameter);
+                    command.Parameters.Add(FreeSpacesParameter);
+                    command.Parameters.Add(ReservedSpacesParameter);
+
+                    var result = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void UpdateBC(int Id, string UserMail, string Concerts, DateTime Date)
+        {
+            try
+            {
+                string sqlExpression = "ChangeBC";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    SqlParameter IdParameter = new SqlParameter("@Id", Id);
+                    SqlParameter DateParameter = new SqlParameter("@newDate", Date);
+                    SqlParameter FilmParameter = new SqlParameter("@newConcertsName", Concerts);
+                    SqlParameter UserMailParameter = new SqlParameter("@newUserMail", UserMail);
+
+
+                    command.Parameters.Add(IdParameter);
+                    command.Parameters.Add(DateParameter);
+                    command.Parameters.Add(FilmParameter);
+                    command.Parameters.Add(UserMailParameter);
+
+                    var result = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void UpdateBE(int Id, string UserMail, string Exhibitions, DateTime Date)
+        {
+            try
+            {
+                string sqlExpression = "ChangeBE";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    SqlParameter IdParameter = new SqlParameter("@Id", Id);
+                    SqlParameter DateParameter = new SqlParameter("@newDate", Date);
+                    SqlParameter FilmParameter = new SqlParameter("@newExhibitionName", Exhibitions);
+                    SqlParameter UserMailParameter = new SqlParameter("@newUserMail", UserMail);
+
+
+                    command.Parameters.Add(IdParameter);
+                    command.Parameters.Add(DateParameter);
+                    command.Parameters.Add(FilmParameter);
+                    command.Parameters.Add(UserMailParameter);
+
+                    var result = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void UpdateExhibitions(int Id, string Name, string Description, string Time, byte[] Photo, string Genre)
+        {
+            try
+            {
+                string sqlExpression = "ChangeExhibitions";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    SqlParameter IdParameter = new SqlParameter("@Id", Id);
+                    SqlParameter NameParameter = new SqlParameter("@newName", Name);
+                    SqlParameter DescriptionParameter = new SqlParameter("@newDescription", Description);
+                    SqlParameter PhotoParameter = new SqlParameter("@newPhoto", Photo);
+                    SqlParameter GenreParameter = new SqlParameter("@newGenre", Genre);
+                    SqlParameter TimeParameter = new SqlParameter("@newTime", Time);
+
+
+                    command.Parameters.Add(IdParameter);
+                    command.Parameters.Add(NameParameter);
+                    command.Parameters.Add(DescriptionParameter);
+                    command.Parameters.Add(PhotoParameter);
+                    command.Parameters.Add(GenreParameter);
+                    command.Parameters.Add(TimeParameter);
+
+                    var result = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void UpdateExhibitionCenters(int Id, string Name, string Address, byte[] Photo)
+        {
+            try
+            {
+                string sqlExpression = "ChangeExhibitionCenters";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+
+                    SqlParameter IdParameter = new SqlParameter("@Id", Id);
+                    SqlParameter NameParameter = new SqlParameter("@newName", Name);
+                    SqlParameter AddressParameter = new SqlParameter("@newAddress", Address);
+                    SqlParameter PhotoParameter = new SqlParameter("@newPhoto", Photo);
+
+                    command.Parameters.Add(IdParameter);
+                    command.Parameters.Add(AddressParameter);
+                    command.Parameters.Add(NameParameter);
+                    command.Parameters.Add(PhotoParameter);
 
                     var result = command.ExecuteNonQuery();
                 }

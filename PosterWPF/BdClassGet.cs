@@ -205,5 +205,188 @@ namespace PosterWPF
                 reader.Close();
             }
         }
+
+        public void GetAllConcertHalls(List<int> Id = null, List<string> Name = null, List<string> Address = null, List<byte[]> Photo = null)
+        {
+            string sqlExpression = "SelectAllConcertHalls";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        if (Id != null)
+                            Id.Add(reader.GetInt32(0));
+                        if (Name != null)
+                            Name.Add(reader.GetString(1));
+                        if (Address != null)
+                            Address.Add(reader.GetString(2));
+                        if (Photo != null)
+                            Photo.Add(reader.GetValue(3) as byte[]);
+                    }
+                }
+                reader.Close();
+            }
+        }
+
+        public void GetAllCICH(List<int> Id, List<DateTime> Date, List<string> ConcertsName, List<string> ConcertHallsName, List<int> Price, List<int> FreeSpaces, List<int> ReservedSpaces)
+        {
+            string sqlExpression = "SelectAllCICH";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Id.Add(reader.GetInt32(0));
+                        Date.Add(reader.GetDateTime(1));
+                        ConcertsName.Add(reader.GetString(2));
+                        ConcertHallsName.Add(reader.GetString(3));
+                        Price.Add(reader.GetInt32(4));
+                        FreeSpaces.Add(reader.GetInt32(5));
+                        ReservedSpaces.Add(reader.GetInt32(6));
+                    }
+                }
+                reader.Close();
+            }
+        }
+        public void GetAllEIEC(List<int> Id, List<DateTime> Date, List<string> ExhibitionName, List<string> ExhibitionCentersName, List<int> Price, List<int> FreeSpaces, List<int> ReservedSpaces)
+        {
+            string sqlExpression = "SelectAllEIEC";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Id.Add(reader.GetInt32(0));
+                        Date.Add(reader.GetDateTime(1));
+                        ExhibitionName.Add(reader.GetString(2));
+                        ExhibitionCentersName.Add(reader.GetString(3));
+                        Price.Add(reader.GetInt32(4));
+                        FreeSpaces.Add(reader.GetInt32(5));
+                        ReservedSpaces.Add(reader.GetInt32(6));
+                    }
+                }
+                reader.Close();
+            }
+        }
+        public void GetAllExhibitions(List<int> Id = null, List<string> Name = null, List<string> Description = null, List<byte[]> Photo = null, List<string> Genre = null, List<string> Time = null)
+        {
+            string sqlExpression = "SelectAllExhibitions";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+
+                    while (reader.Read())
+                    {
+                        if (Id != null)
+                            Id.Add(reader.GetInt32(0));
+                        if (Name != null)
+                            Name.Add(reader.GetString(1));
+                        if (Description != null)
+                            Description.Add(reader.GetString(2));
+                        if (Photo != null)
+                            Photo.Add(reader.GetValue(3) as byte[]);
+                        if (Genre != null)
+                            Genre.Add(reader.GetString(5));
+                        if (Time != null)
+                            Time.Add(reader.GetString(4));
+
+                    }
+                }
+                reader.Close();
+            }
+        }
+
+        public void GetAllExhibitionCenter(List<int> Id = null, List<string> Name = null, List<string> Address = null, List<byte[]> Photo = null)
+        {
+            string sqlExpression = "SelectAllExhibitionCenters";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        if (Id != null)
+                            Id.Add(reader.GetInt32(0));
+                        if (Name != null)
+                            Name.Add(reader.GetString(1));
+                        if (Address != null)
+                            Address.Add(reader.GetString(2));
+                        if (Photo != null)
+                            Photo.Add(reader.GetValue(3) as byte[]);
+                    }
+                }
+                reader.Close();
+            }
+        }
+
+        public void GetAllBC(List<int> Id, List<string> UserMail, List<string> Concerts, List<DateTime> Date)
+        {
+            string sqlExpression = "SelectAllBC";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Id.Add(reader.GetInt32(0));
+                        UserMail.Add(reader.GetString(1));
+                        Concerts.Add(reader.GetString(2));
+                        Date.Add(reader.GetDateTime(3));
+                    }
+                }
+                reader.Close();
+            }
+        }
+        public void GetAllBE(List<int> Id, List<string> UserMail, List<string> Exhibitions, List<DateTime> Date)
+        {
+            string sqlExpression = "SelectAllBE";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Id.Add(reader.GetInt32(0));
+                        UserMail.Add(reader.GetString(1));
+                        Exhibitions.Add(reader.GetString(2));
+                        Date.Add(reader.GetDateTime(3));
+                    }
+                }
+                reader.Close();
+            }
+        }
+
     }
 }

@@ -68,7 +68,7 @@
             <TextBox x:Name="MICReservedSpaces" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="350,221,0,0" TextWrapping="Wrap" Text="Reserved spaces" VerticalAlignment="Top" Width="225"/>
 
         </Grid>
-        <Grid x:Name="Concerts" Loaded="Concerts_Loaded" Visibility="Visible" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
+        <Grid x:Name="Concerts" Loaded="Concerts_Loaded" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
             <DataGrid SelectionChanged="ConcertsBdGrid_SelectionChanged"  ScrollViewer.CanContentScroll="True" Height="150" x:Name="ConcertsBdGrid" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Left" MaxHeight="150" Margin="0,10,0,0" VerticalAlignment="Top">
             </DataGrid>
             <Button Name="ConcertsAdd" FontFamily="Times New Roman" Content="Add new" Margin="10,180,479,199" Click="ConcertsAdd_Click"/>
@@ -83,13 +83,77 @@
             <TextBox x:Name="ConcertsDescription" FontSize="16" FontFamily="Times New Roman" HorizontalAlignment="Left" Height="196" Margin="350,180,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Width="234"/>
 
         </Grid>
-        <Grid x:Name="ConcertHalls" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
-           
+        <Grid Loaded="ConcertHalls_Loaded" x:Name="ConcertHalls" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
+            <DataGrid SelectionChanged="ConcertHallsBdGrid_SelectionChanged"  ScrollViewer.CanContentScroll="True" Height="150" x:Name="ConcertHallsBdGrid" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Left" MaxHeight="150" Margin="0,10,0,0" VerticalAlignment="Top">
+            </DataGrid>
+            <Button Name="ConcertHallsAdd" FontFamily="Times New Roman" Content="Add new" Margin="10,180,479,199" Click="ConcertHallsAdd_Click"/>
+            <Button Name="CocnertHallsSave" FontFamily="Times New Roman" Content="Save" Margin="120,180,359,199" Click="CocnertHallsSave_Click"/>
+            <Button Name="ConcertHallsDelete" FontFamily="Times New Roman" Content="Delete" Margin="240,180,249,199" Click="ConcertHallsDelete_Click"/>
+            <Image Name="ConcertHallsImage" HorizontalAlignment="Left" Height="119" Margin="10,216,0,0" VerticalAlignment="Top" Width="100">
+            </Image>
+            <Button x:Name="ConcertHallsChangeImage" Content="Change Image" HorizontalAlignment="Left" Margin="10,340,0,0" VerticalAlignment="Top" Width="100" Height="33" Click="ConcertHallsChangeImage_Click"/>
+            <TextBox x:Name="ConcertHallsName" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="120,216,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="225"/>
+            <TextBox x:Name="ConcertHallsAddress" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="120,257,0,0" TextWrapping="Wrap" Text="Address" VerticalAlignment="Top" Width="225"/>
+
         </Grid>
-        <Grid x:Name="ConcertsInConcertHalls" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
-        <Grid x:Name="Exhibitions" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
-        <Grid x:Name="ExhibitionCenters" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
-        <Grid x:Name="ExhibitionsInExhibitionCenters" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
+        <Grid Loaded="ConcertsInConcertHalls_Loaded" x:Name="ConcertsInConcertHalls" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
+            <DataGrid SelectionChanged="CICHBdGrid_SelectionChanged" ScrollViewer.CanContentScroll="True" Height="150" x:Name="CICHBdGrid" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Left" MaxHeight="150" Margin="0,10,0,0" VerticalAlignment="Top">
+            </DataGrid>
+            <Button Name="CICHAdd" FontFamily="Times New Roman" Content="Add new" Margin="10,180,479,199" Click="CICHAdd_Click"/>
+            <Button Name="CICHSave" FontFamily="Times New Roman" Content="Save" Margin="120,180,359,199" Click="CICHSave_Click"/>
+            <Button Name="CICHDelete" FontFamily="Times New Roman" Content="Delete" Margin="240,180,249,199" Click="CICHDelete_Click"/>
+            <Calendar x:Name="CICHDate" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="ConcertsIdName" HorizontalAlignment="Left" Margin="194,216,0,0" VerticalAlignment="Top" Width="151" Height="34"/>
+            <ComboBox x:Name="ConcertHallsIdName" HorizontalAlignment="Left" Margin="194,255,0,0" VerticalAlignment="Top" Width="151" Height="34"/>
+
+            <TextBox x:Name="CICHPrice" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="194,294,0,0" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" Width="225"/>
+            <TextBox x:Name="CICHFreeSpaces" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="350,180,0,0" TextWrapping="Wrap" Text="Free spaces" VerticalAlignment="Top" Width="225"/>
+            <TextBox x:Name="CICHReservedSpaces" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="350,221,0,0" TextWrapping="Wrap" Text="Reserved spaces" VerticalAlignment="Top" Width="225"/>
+
+        </Grid>
+        <Grid x:Name="Exhibitions" Loaded="Exhibitions_Loaded" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
+            <DataGrid SelectionChanged="EBdGrid_SelectionChanged"  ScrollViewer.CanContentScroll="True" Height="150" x:Name="EBdGrid" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Left" MaxHeight="150" Margin="0,10,0,0" VerticalAlignment="Top">
+            </DataGrid>
+            <Button Name="EAdd" FontFamily="Times New Roman" Content="Add new" Margin="10,180,479,199" Click="EAdd_Click"/>
+            <Button Name="ESave" FontFamily="Times New Roman" Content="Save" Margin="120,180,359,199" Click="ESave_Click"/>
+            <Button Name="EDelete" FontFamily="Times New Roman" Content="Delete" Margin="240,180,249,199" Click="EDelete_Click"/>
+            <Image Name="EImage" HorizontalAlignment="Left" Height="119" Margin="10,216,0,0" VerticalAlignment="Top" Width="100">
+            </Image>
+            <Button x:Name="EChangeImage" Content="Change Image" HorizontalAlignment="Left" Margin="10,340,0,0" VerticalAlignment="Top" Width="100" Height="33" Click="EChangeImage_Click"/>
+            <TextBox x:Name="EName" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="120,216,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="225"/>
+            <TextBox x:Name="EGenre" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="120,257,0,0" TextWrapping="Wrap" Text="Genre" VerticalAlignment="Top" Width="225"/>
+            <TextBox x:Name="ETime" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="120,298,0,0" TextWrapping="Wrap" Text="Time" VerticalAlignment="Top" Width="225"/>
+            <TextBox x:Name="EDescription" FontSize="16" FontFamily="Times New Roman" HorizontalAlignment="Left" Height="196" Margin="350,180,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Width="234"/>
+
+        </Grid>
+        <Grid x:Name="ExhibitionCenters" Loaded="ExhibitionCenters_Loaded" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
+            <DataGrid SelectionChanged="ECBdGrid_SelectionChanged"  ScrollViewer.CanContentScroll="True" Height="150" x:Name="ECBdGrid" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Left" MaxHeight="150" Margin="0,10,0,0" VerticalAlignment="Top">
+            </DataGrid>
+            <Button Name="ECAdd" FontFamily="Times New Roman" Content="Add new" Margin="10,180,479,199" Click="ECAdd_Click"/>
+            <Button Name="ECSave" FontFamily="Times New Roman" Content="Save" Margin="120,180,359,199" Click="ECSave_Click"/>
+            <Button Name="ECDelete" FontFamily="Times New Roman" Content="Delete" Margin="240,180,249,199" Click="ECDelete_Click"/>
+            <Image Name="ECImage" HorizontalAlignment="Left" Height="119" Margin="10,216,0,0" VerticalAlignment="Top" Width="100">
+            </Image>
+            <Button x:Name="ECChangeImage" Content="Change Image" HorizontalAlignment="Left" Margin="10,340,0,0" VerticalAlignment="Top" Width="100" Height="33" Click="ECChangeImage_Click"/>
+            <TextBox x:Name="ECName" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="120,216,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="225"/>
+            <TextBox x:Name="ECAddress" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="120,257,0,0" TextWrapping="Wrap" Text="Address" VerticalAlignment="Top" Width="225"/>
+
+        </Grid>
+        <Grid Loaded="ExhibitionsInExhibitionCenters_Loaded" x:Name="ExhibitionsInExhibitionCenters" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
+            <DataGrid SelectionChanged="EIECBdGrid_SelectionChanged"  ScrollViewer.CanContentScroll="True" Height="150" x:Name="EIECBdGrid" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Left" MaxHeight="150" Margin="0,10,0,0" VerticalAlignment="Top">
+            </DataGrid>
+            <Button Name="EIECAdd" FontFamily="Times New Roman" Content="Add new" Margin="10,180,479,199" Click="EIECAdd_Click"/>
+            <Button Name="EIECSave" FontFamily="Times New Roman" Content="Save" Margin="120,180,359,199" Click="EIECSave_Click"/>
+            <Button Name="EIECDelete" FontFamily="Times New Roman" Content="Delete" Margin="240,180,249,199" Click="EIECDelete_Click"/>
+            <Calendar x:Name="EIECDate" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="EIdName" HorizontalAlignment="Left" Margin="194,216,0,0" VerticalAlignment="Top" Width="151" Height="34"/>
+            <ComboBox x:Name="ECIdName" HorizontalAlignment="Left" Margin="194,255,0,0" VerticalAlignment="Top" Width="151" Height="34"/>
+
+            <TextBox x:Name="EIECPrice" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="194,294,0,0" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" Width="225"/>
+            <TextBox x:Name="EIECFreeSpaces" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="350,180,0,0" TextWrapping="Wrap" Text="Free spaces" VerticalAlignment="Top" Width="225"/>
+            <TextBox x:Name="EIECReservedSpaces" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="350,221,0,0" TextWrapping="Wrap" Text="Reserved spaces" VerticalAlignment="Top" Width="225"/>
+
+        </Grid>
         <Grid x:Name="Calendar" Loaded="Calendar_Loaded" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
             <DataGrid SelectionChanged="CalendarBdFrid_SelectionChanged" ScrollViewer.CanContentScroll="True" Height="150" x:Name="CalendarBdFrid" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Left" MaxHeight="150" Margin="0,10,0,0" VerticalAlignment="Top">
             </DataGrid>
@@ -108,8 +172,28 @@
             <TextBox x:Name="BKMail" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="194,220,0,0" TextWrapping="Wrap" Text="E-mail" VerticalAlignment="Top" Width="225"/>
             <TextBox x:Name="BKFilm" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="194,261,0,0" TextWrapping="Wrap" Text="Film name" VerticalAlignment="Top" Width="225"/>
         </Grid>
-        <Grid x:Name="BookedConcerts" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
-        <Grid x:Name="BookedExhibitions" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594"/>
+        <Grid x:Name="BookedConcerts" Loaded="BookedConcerts_Loaded" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
+            <DataGrid SelectionChanged="BCBdGrid_SelectionChanged"  ScrollViewer.CanContentScroll="True" Height="150" MaxHeight="150" x:Name="BCBdGrid" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" >
+            </DataGrid>
+            <Button Name="BCAdd" FontFamily="Times New Roman" Content="Add new" Margin="10,180,479,199" Click="BCAdd_Click"/>
+            <Button Name="BCSave" FontFamily="Times New Roman" Content="Save" Margin="120,180,359,199" Click="BCSave_Click"/>
+            <Button Name="BCDelete" FontFamily="Times New Roman" Content="Delete" Margin="240,180,249,199" Click="BCDelete_Click"/>
+            <Calendar x:Name="BCDate" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="BCMail" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="194,220,0,0" TextWrapping="Wrap" Text="E-mail" VerticalAlignment="Top" Width="225"/>
+            <TextBox x:Name="BCConcert" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="194,261,0,0" TextWrapping="Wrap" Text="Film name" VerticalAlignment="Top" Width="225"/>
+
+        </Grid>
+        <Grid x:Name="BookedExhibitions" Loaded="BookedExhibitions_Loaded" Visibility="Visible" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
+            <DataGrid SelectionChanged="BEBdGrid_SelectionChanged"  ScrollViewer.CanContentScroll="True" Height="150" MaxHeight="150" x:Name="BEBdGrid" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" >
+            </DataGrid>
+            <Button Name="BEAdd" FontFamily="Times New Roman" Content="Add new" Margin="10,180,479,199" Click="BEAdd_Click"/>
+            <Button Name="BESave" FontFamily="Times New Roman" Content="Save" Margin="120,180,359,199" Click="BESave_Click"/>
+            <Button Name="BEDelete" FontFamily="Times New Roman" Content="Delete" Margin="240,180,249,199" Click="BEDelete_Click"/>
+            <Calendar x:Name="BEDate" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="BEMail" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="194,220,0,0" TextWrapping="Wrap" Text="E-mail" VerticalAlignment="Top" Width="225"/>
+            <TextBox x:Name="BEExhibition" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="194,261,0,0" TextWrapping="Wrap" Text="Film name" VerticalAlignment="Top" Width="225"/>
+
+        </Grid>
         <Grid x:Name="Users" Loaded="Users_Loaded" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
             <DataGrid SelectionChanged="UsersBdGrid_SelectionChanged" ScrollViewer.CanContentScroll="True" Height="150" MaxHeight="150" x:Name="UsersBdGrid" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" >
             </DataGrid>
