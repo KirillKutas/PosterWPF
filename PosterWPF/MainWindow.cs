@@ -8,7 +8,7 @@ namespace PosterWPF
     partial class MainWindow
     {
         private FilmsPage filmsPage = new FilmsPage();
-        private CalendarPage calendarPage = new CalendarPage();
+        private CalendarPage calendarPage = new CalendarPage(LinkToMainWindow);
         private UserControl BackToFilms;
 
         private void MoveMenu(double x1, double x2)

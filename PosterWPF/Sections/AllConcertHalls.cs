@@ -14,7 +14,7 @@ namespace PosterWPF.Sections
     {
         public delegate void ClickGrid(GridConcertHalls gridConcertHalls);
         public event ClickGrid EventClickGrid;
-        private void OutputElements()
+        public void OutputElements()
         {
             Grid grid = new Grid();
             grid.Name = "grid1"; // имя потом брать из названия фильма

@@ -44,6 +44,7 @@ namespace PosterWPF
                     User.Name = (string)formatter.Deserialize(fs);
                 }
             }
+            User.Date = DateTime.Today;
         }
 
         private void Poster_Closed(object sender, EventArgs e)

@@ -62,9 +62,10 @@ namespace PosterWPF.Sections
             }
             
             ChangeGrid((Grid)grid);
-            refreshMICBdGrid();
+            
             refreshFilmsBdGrid();
             refreshCinemasBdGrid();
+            refreshMICBdGrid();
             refreshCalendarBdGrid();
             refreshUsersBdGrid();
             refreshBKBdGrid();
@@ -542,8 +543,12 @@ namespace PosterWPF.Sections
                 {
                     BKClass bKClass = BookedMoviesBdGrid.SelectedItem as BKClass;
 
-                    BKFilm.Text = bKClass.Film;
-                    BKMail.Text = bKClass.UserMail;
+                    int indexFilms = BMIdName.Items.IndexOf(bKClass.Film);
+                    BMIdName.SelectedItem = BMIdName.Items.GetItemAt(indexFilms);
+
+                    int indexUser = BCUserIdName.Items.IndexOf(bKClass.UserMail);
+                    BMUserIdName.SelectedItem = BMUserIdName.Items.GetItemAt(indexUser);
+
                     BKDate.SelectedDate = bKClass.Date;
                 }
             }
@@ -562,7 +567,7 @@ namespace PosterWPF.Sections
         {
             try
             {
-                bdClassAdd.AddBK(1,BKMail.Text, BKFilm.Text, (DateTime)BKDate.SelectedDate);
+                bdClassAdd.AddBK(1, BMUserIdName.SelectedItem.ToString(), BMIdName.SelectedItem.ToString(), (DateTime)BKDate.SelectedDate);
             }
             catch (Exception ex)
             {
@@ -579,7 +584,7 @@ namespace PosterWPF.Sections
             try
             {
                 BKClass bkClass = BookedMoviesBdGrid.SelectedItem as BKClass;
-                bdClassUpdate.UpdateBK(bkClass.Id, BKMail.Text, BKFilm.Text, (DateTime)BKDate.SelectedDate);
+                bdClassUpdate.UpdateBK(bkClass.Id, BMUserIdName.SelectedItem.ToString(), BMIdName.SelectedItem.ToString(), (DateTime)BKDate.SelectedDate);
             }
             catch (Exception ex)
             {
@@ -939,10 +944,12 @@ namespace PosterWPF.Sections
                     CICHClass cich = CICHBdGrid.SelectedItem as CICHClass;
 
                     CICHDate.SelectedDate = cich.Date;
+
                     int indexConcerts = ConcertsIdName.Items.IndexOf(cich.ConcertsName);
                     ConcertsIdName.SelectedItem = ConcertsIdName.Items.GetItemAt(indexConcerts);
                     int indexConcertHalls = ConcertHallsIdName.Items.IndexOf(cich.ConcertHallsName);
                     ConcertHallsIdName.SelectedItem = ConcertHallsIdName.Items.GetItemAt(indexConcertHalls);
+
                     CICHPrice.Text = cich.Price.ToString();
                     CICHFreeSpaces.Text = cich.FreeSpaces.ToString();
                     CICHReservedSpaces.Text = cich.FreeSpaces.ToString();
@@ -969,9 +976,9 @@ namespace PosterWPF.Sections
 
                     EIECDate.SelectedDate = eiec.Date;
                     int indexExhibitions = EIdName.Items.IndexOf(eiec.ExhibitionName);
-                    ConcertsIdName.SelectedItem = EIdName.Items.GetItemAt(indexExhibitions);
+                    EIdName.SelectedItem = EIdName.Items.GetItemAt(indexExhibitions);
                     int indexExhibitionCenters = ECIdName.Items.IndexOf(eiec.ExhibitionHallsName);
-                    ConcertHallsIdName.SelectedItem = ECIdName.Items.GetItemAt(indexExhibitionCenters);
+                    ECIdName.SelectedItem = ECIdName.Items.GetItemAt(indexExhibitionCenters);
                     EIECPrice.Text = eiec.Price.ToString();
                     EIECFreeSpaces.Text = eiec.FreeSpaces.ToString();
                     EIECReservedSpaces.Text = eiec.FreeSpaces.ToString();
@@ -1025,7 +1032,7 @@ namespace PosterWPF.Sections
         {
             try
             {
-                bdClassAdd.AddEIEC(1, (DateTime)CICHDate.SelectedDate, ConcertsIdName.SelectedItem.ToString(), ConcertHallsIdName.SelectedItem.ToString(), Int32.Parse(CICHPrice.Text), Int32.Parse(CICHFreeSpaces.Text), Int32.Parse(CICHReservedSpaces.Text));
+                bdClassAdd.AddEIEC(1, (DateTime)EIECDate.SelectedDate, EIdName.SelectedItem.ToString(), ECIdName.SelectedItem.ToString(), Int32.Parse(EIECPrice.Text), Int32.Parse(EIECFreeSpaces.Text), Int32.Parse(EIECReservedSpaces.Text));
             }
             catch (Exception ex)
             {
@@ -1033,7 +1040,7 @@ namespace PosterWPF.Sections
             }
             finally
             {
-                refreshCICHBdGrid();
+                refreshEIECBdGrid();
             }
         }
         ///////////////////////////////Exhibitions event/////////////////////////////////////////////////////////////////////////
@@ -1135,7 +1142,7 @@ namespace PosterWPF.Sections
         {
             try
             {
-                if (ConcertsBdGrid.SelectedItem != null)
+                if (EBdGrid.SelectedItem != null)
                 {
                     ExhibitionsClass exhibitionsClass = EBdGrid.SelectedItem as ExhibitionsClass;
 
@@ -1308,8 +1315,12 @@ namespace PosterWPF.Sections
                 {
                     BCClass bCClass = BCBdGrid.SelectedItem as BCClass;
 
-                    BCConcert.Text = bCClass.Concert;
-                    BCMail.Text = bCClass.UserMail;
+                    int indexConcerts = BCIdName.Items.IndexOf(bCClass.Concert);
+                    BCIdName.SelectedItem = BCIdName.Items.GetItemAt(indexConcerts);
+
+                    int indexUser = BCUserIdName.Items.IndexOf(bCClass.UserMail);
+                    BCUserIdName.SelectedItem = BCUserIdName.Items.GetItemAt(indexUser);
+
                     BCDate.SelectedDate = bCClass.Date;
                 }
             }
@@ -1323,7 +1334,7 @@ namespace PosterWPF.Sections
         {
             try
             {
-                bdClassAdd.AddBC(1, BCMail.Text, BCConcert.Text, (DateTime)BCDate.SelectedDate);
+                bdClassAdd.AddBC(1, BCUserIdName.SelectedItem.ToString(), BCIdName.SelectedItem.ToString(), (DateTime)BCDate.SelectedDate);
             }
             catch (Exception ex)
             {
@@ -1340,7 +1351,7 @@ namespace PosterWPF.Sections
             try
             {
                 BCClass bCClass = BCBdGrid.SelectedItem as BCClass;
-                bdClassUpdate.UpdateBC(bCClass.Id, BCMail.Text, BCConcert.Text, (DateTime)BCDate.SelectedDate);
+                bdClassUpdate.UpdateBC(bCClass.Id, BCUserIdName.SelectedItem.ToString(), BCIdName.SelectedItem.ToString(), (DateTime)BCDate.SelectedDate);
             }
             catch (Exception ex)
             {
@@ -1386,8 +1397,12 @@ namespace PosterWPF.Sections
                 {
                     BEClass bEClass = BEBdGrid.SelectedItem as BEClass;
 
-                    BEExhibition.Text = bEClass.Exhibition;
-                    BEMail.Text = bEClass.UserMail;
+                    int indexExhibition = BEIdName.Items.IndexOf(bEClass.Exhibition);
+                    BEIdName.SelectedItem = BEIdName.Items.GetItemAt(indexExhibition);
+
+                    int indexUser = UserIdName.Items.IndexOf(bEClass.UserMail);
+                    UserIdName.SelectedItem = UserIdName.Items.GetItemAt(indexUser);
+
                     BEDate.SelectedDate = bEClass.Date;
                 }
             }
@@ -1401,7 +1416,7 @@ namespace PosterWPF.Sections
         {
             try
             {
-                bdClassAdd.AddBE(1, BEMail.Text, BEExhibition.Text, (DateTime)BEDate.SelectedDate);
+                bdClassAdd.AddBE(1, UserIdName.SelectedItem.ToString(), BEIdName.SelectedItem.ToString(), (DateTime)BEDate.SelectedDate);
             }
             catch (Exception ex)
             {
@@ -1418,7 +1433,7 @@ namespace PosterWPF.Sections
             try
             {
                 BEClass bEClass = BEBdGrid.SelectedItem as BEClass;
-                bdClassUpdate.UpdateBE(bEClass.Id, BEMail.Text, BEExhibition.Text, (DateTime)BEDate.SelectedDate);
+                bdClassUpdate.UpdateBE(bEClass.Id, UserIdName.SelectedItem.ToString(), BEIdName.SelectedItem.ToString(), (DateTime)BEDate.SelectedDate);
             }
             catch (Exception ex)
             {

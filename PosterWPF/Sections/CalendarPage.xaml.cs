@@ -21,9 +21,11 @@ namespace PosterWPF.Sections
     public partial class CalendarPage : UserControl
     {
         public DateTime? selectedDate;
-        public CalendarPage()
+        private MainWindow Main;
+        public CalendarPage(MainWindow mainWindow)
         {
             InitializeComponent();
+            Main = mainWindow;
         }
 
         private void CalendarPage2_Loaded(object sender, RoutedEventArgs e)
@@ -35,6 +37,41 @@ namespace PosterWPF.Sections
         {
             selectedDate = ChangeDate.SelectedDate;
             ChangeDate.SelectedDate = selectedDate.Value.Date;
+            User.Date = selectedDate.Value.Date;
+            switch (User.currentPage)
+            {
+                case "AllFilms":
+                    {
+                        User.allFilms.OutputElements();
+                        break;
+                    }
+                case "AllCinemas":
+                    {
+                        User.allCinemas.OutputElements();
+                        break;
+                    }
+                case "AllConcerts":
+                    {
+                        User.allConcerts.OutputElements();
+                        break;
+                    }
+                case "AllConcertHalls":
+                    {
+                        User.allConcertHalls.OutputElements();
+                        break;
+                    }
+                case "AllExhibition":
+                    {
+                        User.allExhibition.OutputElements();
+                        break;
+                    }
+                case "AllExhibitionCenters":
+                    {
+                        User.allExhibitionCenters.OutputElements();
+                        break;
+                    }
+            }
+            
         }
     }
 }

@@ -30,7 +30,9 @@ namespace PosterWPF.Sections
             FilmsMenu.BorderThickness = new Thickness(0, 0, 1, 3);
             CinemasMenu.BorderThickness = new Thickness(1,0,0,0);
             Output.Children.Clear();
-            Output.Children.Add(new AllFilms());
+            User.allFilms = new AllFilms();
+            User.currentPage = "AllFilms";
+            Output.Children.Add(User.allFilms);
         }
 
         private void CinemasMenu_Click(object sender, RoutedEventArgs e)
@@ -38,13 +40,17 @@ namespace PosterWPF.Sections
             FilmsMenu.BorderThickness = new Thickness(0, 0, 1, 0);
             CinemasMenu.BorderThickness = new Thickness(1, 0, 0, 3);
             Output.Children.Clear();
+            User.allCinemas = new AllCinemas();
+            User.currentPage = "AllCinemas";
             Output.Children.Add(new AllCinemas());
         }
 
         private void MainFilmsPage_Loaded(object sender, RoutedEventArgs e)
         {
             Date.Content = DateTime.Today;
-            Output.Children.Add(new AllFilms());
+            User.allFilms = new AllFilms();
+            User.currentPage = "AllFilms";
+            Output.Children.Add(User.allFilms);
         }
     }
 }

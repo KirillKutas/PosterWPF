@@ -169,8 +169,9 @@
             <Button Name="BKSave" FontFamily="Times New Roman" Content="Save" Margin="120,180,359,199" Click="BKSave_Click"/>
             <Button Name="BKDelete" FontFamily="Times New Roman" Content="Delete" Margin="240,180,249,199" Click="BKDelete_Click"/>
             <Calendar x:Name="BKDate" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="BKMail" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="194,220,0,0" TextWrapping="Wrap" Text="E-mail" VerticalAlignment="Top" Width="225"/>
-            <TextBox x:Name="BKFilm" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="194,261,0,0" TextWrapping="Wrap" Text="Film name" VerticalAlignment="Top" Width="225"/>
+            <ComboBox x:Name="BMIdName" HorizontalAlignment="Left" Margin="194,216,0,0" VerticalAlignment="Top" Width="151" Height="34"/>
+            <ComboBox x:Name="BMUserIdName" HorizontalAlignment="Left" Margin="194,255,0,0" VerticalAlignment="Top" Width="151" Height="34"/>
+            
         </Grid>
         <Grid x:Name="BookedConcerts" Loaded="BookedConcerts_Loaded" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
             <DataGrid SelectionChanged="BCBdGrid_SelectionChanged"  ScrollViewer.CanContentScroll="True" Height="150" MaxHeight="150" x:Name="BCBdGrid" IsReadOnly="True" AutoGenerateColumns="True" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" >
@@ -179,8 +180,8 @@
             <Button Name="BCSave" FontFamily="Times New Roman" Content="Save" Margin="120,180,359,199" Click="BCSave_Click"/>
             <Button Name="BCDelete" FontFamily="Times New Roman" Content="Delete" Margin="240,180,249,199" Click="BCDelete_Click"/>
             <Calendar x:Name="BCDate" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="BCMail" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="194,220,0,0" TextWrapping="Wrap" Text="E-mail" VerticalAlignment="Top" Width="225"/>
-            <TextBox x:Name="BCConcert" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="194,261,0,0" TextWrapping="Wrap" Text="Film name" VerticalAlignment="Top" Width="225"/>
+            <ComboBox x:Name="BCIdName" HorizontalAlignment="Left" Margin="194,216,0,0" VerticalAlignment="Top" Width="151" Height="34"/>
+            <ComboBox x:Name="BCUserIdName" HorizontalAlignment="Left" Margin="194,255,0,0" VerticalAlignment="Top" Width="151" Height="34"/>
 
         </Grid>
         <Grid x:Name="BookedExhibitions" Loaded="BookedExhibitions_Loaded" Visibility="Visible" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">
@@ -190,8 +191,8 @@
             <Button Name="BESave" FontFamily="Times New Roman" Content="Save" Margin="120,180,359,199" Click="BESave_Click"/>
             <Button Name="BEDelete" FontFamily="Times New Roman" Content="Delete" Margin="240,180,249,199" Click="BEDelete_Click"/>
             <Calendar x:Name="BEDate" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="BEMail" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="194,220,0,0" TextWrapping="Wrap" Text="E-mail" VerticalAlignment="Top" Width="225"/>
-            <TextBox x:Name="BEExhibition" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Height="36" Margin="194,261,0,0" TextWrapping="Wrap" Text="Film name" VerticalAlignment="Top" Width="225"/>
+            <ComboBox x:Name="BEIdName" HorizontalAlignment="Left" Margin="194,216,0,0" VerticalAlignment="Top" Width="151" Height="34"/>
+            <ComboBox x:Name="UserIdName" HorizontalAlignment="Left" Margin="194,255,0,0" VerticalAlignment="Top" Width="151" Height="34"/>
 
         </Grid>
         <Grid x:Name="Users" Loaded="Users_Loaded" Visibility="Hidden" HorizontalAlignment="Left" Height="410" Margin="0,37,0,0" VerticalAlignment="Top" Width="594">

@@ -147,6 +147,22 @@ namespace PosterWPF.Sections
                 bKClasses.Add(new BKClass(Id[iterator], UserMail[iterator], Film[iterator], Date[iterator]));
             }
             BookedMoviesBdGrid.ItemsSource = bKClasses;
+
+            List<string> Films = new List<string>();
+            List<string> UsersMail = new List<string>();
+            bdClassGet.GetAllFilms(Name: Films);
+            bdClassGet.GetAllUsers(Mail: UsersMail);
+
+            BMIdName.Items.Clear();
+            BMUserIdName.Items.Clear();
+            foreach (var item in Films)
+            {
+                BMIdName.Items.Add(item);
+            }
+            foreach (var item in UsersMail)
+            {
+                BMUserIdName.Items.Add(item);
+            }
         }
         void refreshConcertsBdGrid()
         {
@@ -211,8 +227,8 @@ namespace PosterWPF.Sections
             bdClassGet.GetAllConcerts(Name: concertsIdName);
             bdClassGet.GetAllConcertHalls(Name: concertHallsIdName);
 
-            FilmIdName.Items.Clear();
-            CinemaIdName.Items.Clear();
+            ConcertsIdName.Items.Clear();
+            ConcertHallsIdName.Items.Clear();
             foreach (var item in concertsIdName)
             {
                 ConcertsIdName.Items.Add(item);
@@ -247,8 +263,8 @@ namespace PosterWPF.Sections
             bdClassGet.GetAllExhibitions(Name: ExhibitionsIdName);
             bdClassGet.GetAllExhibitionCenter(Name: ExhibitionCentersIdName);
 
-            FilmIdName.Items.Clear();
-            CinemaIdName.Items.Clear();
+            EIdName.Items.Clear();
+            ECIdName.Items.Clear();
             foreach (var item in ExhibitionsIdName)
             {
                 EIdName.Items.Add(item);
@@ -311,6 +327,22 @@ namespace PosterWPF.Sections
                 bEClasses.Add(new BEClass(Id[iterator], UserMail[iterator], Exhibition[iterator], Date[iterator]));
             }
             BEBdGrid.ItemsSource = bEClasses;
+
+            List<string> Exhibitions = new List<string>();
+            List<string> UsersMail = new List<string>();
+            bdClassGet.GetAllExhibitions(Name: Exhibitions);
+            bdClassGet.GetAllUsers(Mail: UsersMail);
+
+            BEIdName.Items.Clear();
+            UserIdName.Items.Clear();
+            foreach (var item in Exhibitions)
+            {
+                BEIdName.Items.Add(item);
+            }
+            foreach (var item in UsersMail)
+            {
+                UserIdName.Items.Add(item);
+            }
         }
 
         void refreshBCBdGrid()
@@ -327,6 +359,22 @@ namespace PosterWPF.Sections
                 bCClasses.Add(new BCClass(Id[iterator], UserMail[iterator], Concert[iterator], Date[iterator]));
             }
             BCBdGrid.ItemsSource = bCClasses;
+
+            List<string> Concerts = new List<string>();
+            List<string> UsersMail = new List<string>();
+            bdClassGet.GetAllConcerts(Name: Concerts);
+            bdClassGet.GetAllUsers(Mail: UsersMail);
+
+            BCIdName.Items.Clear();
+            BCUserIdName.Items.Clear();
+            foreach (var item in Concerts)
+            {
+                BCIdName.Items.Add(item);
+            }
+            foreach (var item in UsersMail)
+            {
+                BCUserIdName.Items.Add(item);
+            }
         }
 
         void ImageToBD(ref byte[] imagecode)

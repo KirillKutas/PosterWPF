@@ -1,9 +1,11 @@
-﻿using System;
+﻿using PosterWPF.Sections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace PosterWPF
 {
@@ -11,6 +13,14 @@ namespace PosterWPF
     static class User
     {
         public static string Name;
+        public static DateTime Date;
+        public static AllFilms allFilms;
+        public static AllCinemas allCinemas;
+        public static AllConcertHalls allConcertHalls;
+        public static AllConcerts allConcerts;
+        public static AllExhibition allExhibition;
+        public static AllExhibitionCenters allExhibitionCenters;
+        public static string currentPage;
 
         public static string HashPassword(string password)
         {

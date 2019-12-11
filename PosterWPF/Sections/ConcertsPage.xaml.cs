@@ -29,7 +29,9 @@ namespace PosterWPF.Sections
             Concerts.BorderThickness = new Thickness(0, 0, 1, 3);
             ConcertHalls.BorderThickness = new Thickness(1, 0, 0, 0);
             Output.Children.Clear();
-            Output.Children.Add(new AllConcerts());
+            User.allConcerts = new AllConcerts();
+            User.currentPage = "AllConcerts";
+            Output.Children.Add(User.allConcerts);
         }
 
         private void ConcertHalls_Click(object sender, RoutedEventArgs e)
@@ -37,6 +39,8 @@ namespace PosterWPF.Sections
             Concerts.BorderThickness = new Thickness(0, 0, 1, 0);
             ConcertHalls.BorderThickness = new Thickness(1, 0, 0, 3);
             Output.Children.Clear();
+            User.allConcertHalls = new AllConcertHalls();
+            User.currentPage = "AllConcertHalls";
             Output.Children.Add(new AllConcertHalls());
         }
 
@@ -44,7 +48,9 @@ namespace PosterWPF.Sections
         private void MainConcertsPage_Loaded(object sender, RoutedEventArgs e)
         {
             Date.Content = DateTime.Today;
-            Output.Children.Add(new AllConcerts());
+            User.allConcerts = new AllConcerts();
+            User.currentPage = "AllConcerts";
+            Output.Children.Add(User.allConcerts);
         }
     }
 }

@@ -75,6 +75,41 @@ namespace PosterWPF
             }
         }
 
+        public void GetAllFilmsByDate(DateTime date, List<string> Name = null, List<string> DescriptionAndActors = null, List<byte[]> Photo = null, List<string> Genre = null, List<string> Country = null, List<string> Duration = null)
+        {
+            string sqlExpression = "SelectAllFilmsByDate";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlParameter DateParameter = new SqlParameter("@currentDate", date);
+                command.Parameters.Add(DateParameter);
+                var result = command.ExecuteNonQuery();
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+
+                    while (reader.Read())
+                    {
+                        if (Name != null)
+                            Name.Add(reader.GetString(0));
+                        if (DescriptionAndActors != null)
+                            DescriptionAndActors.Add(reader.GetString(1));
+                        if (Photo != null)
+                            Photo.Add(reader.GetValue(2) as byte[]);
+                        if (Genre != null)
+                            Genre.Add(reader.GetString(3));
+                        if (Country != null)
+                            Country.Add(reader.GetString(4));
+                        if (Duration != null)
+                            Duration.Add(reader.GetString(5));
+                    }
+                }
+                reader.Close();
+            }
+        }
+
         public void GetAllCinemas(List<int> Id = null, List<string> Name = null, List<string> Address = null, List<byte[]> Photo = null)
         {
             string sqlExpression = "SelectAllCinemas";
@@ -101,7 +136,34 @@ namespace PosterWPF
                 reader.Close();
             }
         }
-        
+        public void GetAllCinemasByDate(DateTime date, List<string> Name = null, List<string> Address = null, List<byte[]> Photo = null)
+        {
+            string sqlExpression = "SelectAllCinemasByDate";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlParameter DateParameter = new SqlParameter("@currentDate", date);
+                command.Parameters.Add(DateParameter);
+                var result = command.ExecuteNonQuery();
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        if (Name != null)
+                            Name.Add(reader.GetString(0));
+                        if (Address != null)
+                            Address.Add(reader.GetString(1));
+                        if (Photo != null)
+                            Photo.Add(reader.GetValue(2) as byte[]);
+                    }
+                }
+                reader.Close();
+            }
+        }
+
         public void GetAllMIC(List<int> Id, List<DateTime> Date, List<string> FilmName, List<string> CinemaName, List<int> Price, List<string> Time, List<int> FreeSpaces, List<int> ReservedSpaces)
         {
             string sqlExpression = "SelectAllMIC";
