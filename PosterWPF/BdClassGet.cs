@@ -267,6 +267,39 @@ namespace PosterWPF
                 reader.Close();
             }
         }
+        public void GetAllConcertsByDate(DateTime date, List<string> Name = null, List<string> Description = null, List<byte[]> Photo = null, List<string> Genre = null, List<string> Time = null)
+        {
+            string sqlExpression = "SelectAllConcertsByDate";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlParameter DateParameter = new SqlParameter("@currentDate", date);
+                command.Parameters.Add(DateParameter);
+                var result = command.ExecuteNonQuery();
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+
+                    while (reader.Read())
+                    {
+                        if (Name != null)
+                            Name.Add(reader.GetString(0));
+                        if (Description != null)
+                            Description.Add(reader.GetString(1));
+                        if (Photo != null)
+                            Photo.Add(reader.GetValue(3) as byte[]);
+                        if (Genre != null)
+                            Genre.Add(reader.GetString(4));
+                        if (Time != null)
+                            Time.Add(reader.GetString(2));
+
+                    }
+                }
+                reader.Close();
+            }
+        }
 
         public void GetAllConcertHalls(List<int> Id = null, List<string> Name = null, List<string> Address = null, List<byte[]> Photo = null)
         {
@@ -289,6 +322,33 @@ namespace PosterWPF
                             Address.Add(reader.GetString(2));
                         if (Photo != null)
                             Photo.Add(reader.GetValue(3) as byte[]);
+                    }
+                }
+                reader.Close();
+            }
+        }
+        public void GetAllConcertHallsByDate(DateTime date, List<string> Name = null, List<string> Address = null, List<byte[]> Photo = null)
+        {
+            string sqlExpression = "SelectAllConcertHallsByDate";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlParameter DateParameter = new SqlParameter("@currentDate", date);
+                command.Parameters.Add(DateParameter);
+                var result = command.ExecuteNonQuery();
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        if (Name != null)
+                            Name.Add(reader.GetString(0));
+                        if (Address != null)
+                            Address.Add(reader.GetString(1));
+                        if (Photo != null)
+                            Photo.Add(reader.GetValue(2) as byte[]);
                     }
                 }
                 reader.Close();
@@ -377,6 +437,39 @@ namespace PosterWPF
                 reader.Close();
             }
         }
+        public void GetAllExhibitionsByDate(DateTime date, List<string> Name = null, List<string> Description = null, List<byte[]> Photo = null, List<string> Genre = null, List<string> Time = null)
+        {
+            string sqlExpression = "SelectAllExhibitionsByDate";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlParameter DateParameter = new SqlParameter("@currentDate", date);
+                command.Parameters.Add(DateParameter);
+                var result = command.ExecuteNonQuery();
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+
+                    while (reader.Read())
+                    {
+                        if (Name != null)
+                            Name.Add(reader.GetString(0));
+                        if (Description != null)
+                            Description.Add(reader.GetString(1));
+                        if (Photo != null)
+                            Photo.Add(reader.GetValue(2) as byte[]);
+                        if (Genre != null)
+                            Genre.Add(reader.GetString(4));
+                        if (Time != null)
+                            Time.Add(reader.GetString(3));
+
+                    }
+                }
+                reader.Close();
+            }
+        }
 
         public void GetAllExhibitionCenter(List<int> Id = null, List<string> Name = null, List<string> Address = null, List<byte[]> Photo = null)
         {
@@ -399,6 +492,33 @@ namespace PosterWPF
                             Address.Add(reader.GetString(2));
                         if (Photo != null)
                             Photo.Add(reader.GetValue(3) as byte[]);
+                    }
+                }
+                reader.Close();
+            }
+        }
+        public void GetAllExhibitionCenterByDate(DateTime date, List<string> Name = null, List<string> Address = null, List<byte[]> Photo = null)
+        {
+            string sqlExpression = "SelectAllExhibitionCentersByDate";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlParameter DateParameter = new SqlParameter("@currentDate", date);
+                command.Parameters.Add(DateParameter);
+                var result = command.ExecuteNonQuery();
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        if (Name != null)
+                            Name.Add(reader.GetString(0));
+                        if (Address != null)
+                            Address.Add(reader.GetString(1));
+                        if (Photo != null)
+                            Photo.Add(reader.GetValue(2) as byte[]);
                     }
                 }
                 reader.Close();
