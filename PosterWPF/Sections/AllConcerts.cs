@@ -16,15 +16,17 @@ namespace PosterWPF.Sections
         public delegate void ClickGrid(GridConcerts gridConcerts);
         public event ClickGrid EventClickGrid;
         private BdClassGet bdClassGet = new BdClassGet();
+        List<int> Id = new List<int>();
+        new List<string> Name = new List<string>();
+        List<string> Description = new List<string>();
+        List<byte[]> Photo = new List<byte[]>();
+        List<string> Genre = new List<string>();
+        List<string> Time = new List<string>();
         public void OutputElements()
         {
-            List<string> Name = new List<string>();
-            List<string> Description = new List<string>();
-            List<byte[]> Photo = new List<byte[]>();
-            List<string> Genre = new List<string>();
-            List<string> Time = new List<string>();
+            
 
-            bdClassGet.GetAllConcertsByDate(User.Date, Name, Description, Photo, Genre, Time);
+            bdClassGet.GetAllConcertsByDate(User.Date, Id, Name, Description, Photo, Genre, Time);
             MainStack.Children.Clear();
             if (Name.Count == 0)
             {
@@ -41,7 +43,7 @@ namespace PosterWPF.Sections
             for (int iterator = 0; iterator < Name.Count; iterator++)
             {
                 Grid grid = new Grid();
-                grid.Name = "grid1"; // имя потом брать из названия фильма
+                grid.Name = Name[iterator]; // имя потом брать из названия фильма
                 grid.Height = 178;
                 grid.MouseDown += Grid_MouseDown;
 
@@ -106,8 +108,16 @@ namespace PosterWPF.Sections
 
         private void Grid_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            EventClickGrid?.Invoke(new GridConcerts());
-            EventClickGrid += MainWindow.EventClickGrid;
+            Grid grid = (Grid)sender;
+            for (int a = 0; a < Name.Count; a++)
+            {
+                if (Name[a] == grid.Name)
+                {
+                    EventClickGrid?.Invoke(new GridConcerts(Id[a], Name[a], Genre[a], Description[a], Photo[a]));
+                    EventClickGrid += MainWindow.EventClickGrid;
+                }
+            }
+                
         }
     }
 }

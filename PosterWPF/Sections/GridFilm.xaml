@@ -15,7 +15,9 @@
 
                 <TextBox x:Name="ActorsAndDescriptions" IsReadOnly="True" HorizontalAlignment="Left" Margin="28,340,0,0" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" FontSize="20" FontFamily="Times New Roman"  VerticalAlignment="Top" Height="194" Width="437" BorderBrush="White"/>
 
-                <StackPanel x:Name="Cinemas" HorizontalAlignment="Left" Margin="0,576,0,0" VerticalAlignment="Top" Width="494"/>
+                <StackPanel x:Name="Cinemas" HorizontalAlignment="Left" Margin="0,576,0,0" VerticalAlignment="Top" Width="494">
+                    <Image Height="100"/>
+                </StackPanel>
                 <Label Content="Cinemas:" HorizontalAlignment="Left" Margin="28,545,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="20"/>
                 <Image x:Name="FilmImage" HorizontalAlignment="Left" Height="235" VerticalAlignment="Top" Width="477"/>
 

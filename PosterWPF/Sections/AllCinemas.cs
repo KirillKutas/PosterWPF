@@ -15,14 +15,16 @@ namespace PosterWPF.Sections
     {
         public delegate void ClickGrid(GridCinema gridCinema);
         public event ClickGrid EventClickGrid;
+        BdClassGet bdClassGet = new BdClassGet();
+        List<int> Id = new List<int>();
+        List<string> Name = new List<string>();
+        List<string> Address = new List<string>();
+        List<byte[]> Photo = new List<byte[]>();
         public void OutputElements()
         {
-            BdClassGet bdClassGet = new BdClassGet();
-            List<string> Name = new List<string>();
-            List<string> Address = new List<string>();
-            List<byte[]> Photo = new List<byte[]>();
+            
 
-            bdClassGet.GetAllCinemasByDate(User.Date, Name, Address, Photo);
+            bdClassGet.GetAllCinemasByDate(User.Date,Id, Name, Address, Photo);
             if (Name.Count == 0)
             {
                 Label err = new Label();
@@ -38,7 +40,7 @@ namespace PosterWPF.Sections
             for(int iterator = 0; iterator < Name.Count; iterator++)
             {
                 Grid grid = new Grid();
-                grid.Name = "grid1"; // имя потом брать из названия фильма
+                grid.Name = Name[iterator]; // имя потом брать из названия фильма
                 grid.Height = 150;
                 grid.MouseDown += Grid_MouseDown;
 
@@ -89,8 +91,15 @@ namespace PosterWPF.Sections
         }
         private void Grid_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            EventClickGrid?.Invoke(new GridCinema());
-            EventClickGrid += MainWindow.EventClickGrid;
+            Grid grid = (Grid)sender;
+            for (int a = 0; a < Name.Count; a++)
+            {
+                if (Name[a] == grid.Name)
+                {
+                    EventClickGrid?.Invoke(new GridCinema(Id[a],Name[a],Photo[a]));
+                    EventClickGrid += MainWindow.EventClickGrid;
+                }
+            }    
         }
     }
 }

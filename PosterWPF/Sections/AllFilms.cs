@@ -22,16 +22,17 @@ namespace PosterWPF.Sections
         public delegate void ClickGrid(GridFilm gridFilm);
         public event ClickGrid EventClickGrid;
         private BdClassGet bdClassGet = new BdClassGet();
+        List<int> Id = new List<int>();
+        new List<string> Name = new List<string>();
+        List<string> DescriptionAndActors = new List<string>();
+        List<byte[]> Photo = new List<byte[]>();
+        List<string> Genre = new List<string>();
+        List<string> Country = new List<string>();
+        List<string> Duration = new List<string>();
         public void OutputElements()
         {
-            List<string> Name = new List<string>();
-            List<string> DescriptionAndActors = new List<string>();
-            List<byte[]> Photo = new List<byte[]>();
-            List<string> Genre = new List<string>();
-            List<string> Country = new List<string>();
-            List<string> Duration = new List<string>();
-
-            bdClassGet.GetAllFilmsByDate(User.Date, Name, DescriptionAndActors, Photo, Genre, Country, Duration);
+           
+            bdClassGet.GetAllFilmsByDate(User.Date, Id, Name, DescriptionAndActors, Photo, Genre, Country, Duration);
             MainStack.Children.Clear();
             if (Name.Count == 0)
             {
@@ -48,7 +49,7 @@ namespace PosterWPF.Sections
             for (int iterator = 0; iterator < Name.Count; iterator++)
             {
                 Grid grid = new Grid();
-                grid.Name = "grid1"; // имя потом брать из названия фильма
+                grid.Name = Name[iterator]; // имя потом брать из названия фильма
                 grid.Height = 178;
                 grid.MouseDown += Grid_MouseDown;
 
@@ -112,8 +113,16 @@ namespace PosterWPF.Sections
 
         private void Grid_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            EventClickGrid?.Invoke(new GridFilm());
-            EventClickGrid += MainWindow.EventClickGrid;
+            Grid grid = (Grid)sender;
+            for(int a = 0; a < Name.Count; a++)
+            {
+                if (Name[a] == grid.Name)
+                {
+                    EventClickGrid?.Invoke(new GridFilm(Id: Id[a], Name: Name[a], Description: DescriptionAndActors[a], Photo: Photo[a], Genre: Genre[a], Country: Country[a], Duration: Duration[a]));
+                    EventClickGrid += MainWindow.EventClickGrid;
+                }
+            }
+            
         }
     }
 }

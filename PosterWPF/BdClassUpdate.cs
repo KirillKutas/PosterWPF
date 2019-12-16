@@ -468,5 +468,95 @@ namespace PosterWPF
                 MessageBox.Show(ex.Message);
             }
         }
+        public void BuyFilm(int id, int count, string user, DateTime date)
+        {
+            try
+            {
+                string sqlExpression = "BuyFilms";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+
+                    SqlParameter IdParameter = new SqlParameter("@Id", id);
+                    SqlParameter NameParameter = new SqlParameter("@count", count);
+                    SqlParameter AddressParameter = new SqlParameter("@User", user);
+                    SqlParameter PhotoParameter = new SqlParameter("@Date", date);
+
+                    command.Parameters.Add(IdParameter);
+                    command.Parameters.Add(AddressParameter);
+                    command.Parameters.Add(NameParameter);
+                    command.Parameters.Add(PhotoParameter);
+
+                    var result = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void BuyConcerts(int id, int count, string user, DateTime date)
+        {
+            try
+            {
+                string sqlExpression = "BuyConcerts";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+
+                    SqlParameter IdParameter = new SqlParameter("@Id", id);
+                    SqlParameter NameParameter = new SqlParameter("@count", count);
+                    SqlParameter AddressParameter = new SqlParameter("@User", user);
+                    SqlParameter PhotoParameter = new SqlParameter("@Date", date);
+
+                    command.Parameters.Add(IdParameter);
+                    command.Parameters.Add(AddressParameter);
+                    command.Parameters.Add(NameParameter);
+                    command.Parameters.Add(PhotoParameter);
+
+                    var result = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void BuyExhibitions(int id, int count, string user, DateTime date)
+        {
+            try
+            {
+                string sqlExpression = "BuyExhibitions";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+
+                    SqlParameter IdParameter = new SqlParameter("@Id", id);
+                    SqlParameter NameParameter = new SqlParameter("@count", count);
+                    SqlParameter AddressParameter = new SqlParameter("@User", user);
+                    SqlParameter PhotoParameter = new SqlParameter("@Date", date);
+
+                    command.Parameters.Add(IdParameter);
+                    command.Parameters.Add(AddressParameter);
+                    command.Parameters.Add(NameParameter);
+                    command.Parameters.Add(PhotoParameter);
+
+                    var result = command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

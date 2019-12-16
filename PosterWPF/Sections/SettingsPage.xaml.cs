@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -42,6 +43,28 @@ namespace PosterWPF.Sections
                     ApplicationManagement.FontSize = 24;
                     ApplicationManagement.Click += ApplicationManagement_Click;
                     MainStack.Children.Add(ApplicationManagement);
+
+                    Button ExportToXML = new Button();
+                    ExportToXML.Content = "Export to XML";
+                    ExportToXML.Background = Brushes.White;
+                    ExportToXML.Style = (Style)ApplicationManagement.FindResource("ButtonsStyle1");
+                    ExportToXML.Height = 50;
+                    ExportToXML.Width = 494;
+                    ExportToXML.BorderThickness = new Thickness(0, 0, 0, 2);
+                    ExportToXML.FontSize = 24;
+                    ExportToXML.Click += ExportToXML_Click;
+                    MainStack.Children.Add(ExportToXML);
+
+                    Button ImportFromXML = new Button();
+                    ImportFromXML.Content = "Import from XML";
+                    ImportFromXML.Background = Brushes.White;
+                    ImportFromXML.Style = (Style)ApplicationManagement.FindResource("ButtonsStyle1");
+                    ImportFromXML.Height = 50;
+                    ImportFromXML.Width = 494;
+                    ImportFromXML.BorderThickness = new Thickness(0, 0, 0, 2);
+                    ImportFromXML.FontSize = 24;
+                    ImportFromXML.Click += ImportFromXML_Click;
+                    MainStack.Children.Add(ImportFromXML);
                 }
 
                 Button PersonalAccount = new Button();
@@ -82,6 +105,56 @@ namespace PosterWPF.Sections
             }
         }
 
+        private void ImportFromXML_Click(object sender, RoutedEventArgs e)
+        {
+            string connectionString = @"Data Source=.;Initial Catalog=Poster;Integrated Security=True";
+            try
+            {
+                string sqlExpression = "ImportFromXML";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    var result = command.ExecuteScalar();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ExportToXML_Click(object sender, RoutedEventArgs e)
+        {
+            string connectionString = @"Data Source=.;Initial Catalog=Poster;Integrated Security=True";
+            try
+            {
+                string sqlExpression = "ExportToXML";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    SqlParameter PathParameter = new SqlParameter("@path", @"E:\Kirill\BackupKP");
+
+                    command.Parameters.Add(PathParameter);
+
+                    var result = command.ExecuteScalar();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void ApplicationManagement_Click(object sender, RoutedEventArgs e)
         {
             var appM = new AppManagement();
@@ -115,5 +188,6 @@ namespace PosterWPF.Sections
                 fileInf.Delete();
             }
         }
+
     }
 }

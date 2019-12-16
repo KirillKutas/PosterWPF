@@ -38,6 +38,13 @@ namespace PosterWPF
             LinkToMainWindow.Back.Visibility = Visibility.Hidden;
             LinkToMainWindow.SetGridChildren(LinkToMainWindow.MainBody, userControl);
         }
+        public static void BackSetting(UserControl userControl)
+        {
+            LinkToMainWindow.Calendar.Visibility = Visibility.Hidden;
+            LinkToMainWindow.AnimationMenu.Visibility = Visibility.Hidden;
+            LinkToMainWindow.Back.Visibility = Visibility.Visible;
+            LinkToMainWindow.BackToFilms = userControl;
+        }
 
         public static void OpenFilm(UserControl userControl)
         {

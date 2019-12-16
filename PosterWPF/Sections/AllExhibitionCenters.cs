@@ -15,14 +15,15 @@ namespace PosterWPF.Sections
     {
         public delegate void ClickGrid(GridExhibitionCenters gridExhibitionCenters);
         public event ClickGrid EventClickGrid;
-        private BdClassGet bdClassGet = new BdClassGet();
+        BdClassGet bdClassGet = new BdClassGet();
+        List<int> Id = new List<int>();
+        new List<string> Name = new List<string>();
+        List<string> Address = new List<string>();
+        List<byte[]> Photo = new List<byte[]>();
         public void OutputElements()
         {
-            List<string> Name = new List<string>();
-            List<string> Address = new List<string>();
-            List<byte[]> Photo = new List<byte[]>();
 
-            bdClassGet.GetAllExhibitionCenterByDate(User.Date, Name, Address, Photo);
+            bdClassGet.GetAllExhibitionCenterByDate(User.Date,Id, Name, Address, Photo);
             MainStack.Children.Clear();
             if (Name.Count == 0)
             {
@@ -39,7 +40,7 @@ namespace PosterWPF.Sections
             for (int iterator = 0; iterator < Name.Count; iterator++)
             {
                 Grid grid = new Grid();
-                grid.Name = "grid1"; // имя потом брать из названия фильма
+                grid.Name = Name[iterator]; // имя потом брать из названия фильма
                 grid.Height = 150;
                 grid.MouseDown += Grid_MouseDown;
 
@@ -90,8 +91,15 @@ namespace PosterWPF.Sections
         }
         private void Grid_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            EventClickGrid?.Invoke(new GridExhibitionCenters());
-            EventClickGrid += MainWindow.EventClickGrid;
+            Grid grid = (Grid)sender;
+            for (int a = 0; a < Name.Count; a++)
+            {
+                if (Name[a] == grid.Name)
+                {
+                    EventClickGrid?.Invoke(new GridExhibitionCenters(Id[a], Name[a], Photo[a]));
+                    EventClickGrid += MainWindow.EventClickGrid;
+                }
+            }
         }
     }
 }

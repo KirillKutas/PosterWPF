@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,17 +21,40 @@ namespace PosterWPF.Sections
     /// </summary>
     public partial class GridExhibitionCenters : UserControl
     {
-        public delegate void CinemaDelegate(ExhibitionsPage exhibitionsPage);
+        public delegate void CinemaDelegate(UserControl exhibitionsPage);
         public event CinemaDelegate OpenCinema;
-
+        BdClassGet get = new BdClassGet();
+        BdClassUpdate classUpdate = new BdClassUpdate();
+        string a;
+        int rf = 1;
+        List<int> IdC = new List<int>();
+        List<string> NameC = new List<string>();
+        List<string> GenreC = new List<string>();
+        List<byte[]> PhotoC = new List<byte[]>();
+        List<int> PriceC = new List<int>();
+        List<int> FreeSpaces = new List<int>();
+        List<int> ReservedSpaces = new List<int>();
+        List<string> TimeC = new List<string>();
         public GridExhibitionCenters()
         {
             InitializeComponent();
         }
+        public GridExhibitionCenters(int Id, string Name, byte[] Photo, string a = null)
+        {
+            InitializeComponent();
+            this.a = a;
+            CinemaName.Content = Name;
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.StreamSource = new MemoryStream(Photo);
+            image.EndInit();
 
+            CinemaImage.Source = image;
+            get.GetEByECId(Id, User.Date, NameC, GenreC, TimeC, PhotoC, PriceC, FreeSpaces, ReservedSpaces, IdC);
+        }
         private void MainGridExhibitionCenters_Loaded(object sender, RoutedEventArgs e)
         {
-            for (int a = 0; a < 10; a++)
+            for (int a = 0; a < NameC.Count; a++)
             {
                 Border border = new Border();
                 border.Background = Brushes.WhiteSmoke;
@@ -38,47 +62,91 @@ namespace PosterWPF.Sections
                 border.Height = 4;
 
                 Grid grid = new Grid();
-                grid.Name = "grid1"; // имя потом брать из названия фильма
+                grid.Name = "Id_"; // имя потом брать из названия фильма
                 grid.Height = 120;
 
                 MainStack.Children.Add(border);
                 MainStack.Children.Add(grid);
 
                 Label CinemaName = new Label();
-                CinemaName.Content = "Name"; // из бд
+                CinemaName.Content = NameC[a]; // из бд
                 CinemaName.Margin = new Thickness(28, 15, 0, 0);
                 CinemaName.FontFamily = new FontFamily("Times New Roman");
                 CinemaName.FontSize = 21;
                 CinemaName.FontWeight = FontWeights.Bold;
 
                 Label Time = new Label();
-                Time.Content = "Time"; // из бд
+                Time.Content = TimeC[a]; // из бд
                 Time.Margin = new Thickness(28, 45, 0, 0);
                 Time.FontFamily = new FontFamily("Times New Roman");
                 Time.FontSize = 18;
                 Time.FontWeight = FontWeights.Bold;
 
                 Label Price = new Label();
-                Price.Content = "Price"; // из бд
+                Price.Content = PriceC[a]; // из бд
                 Price.Margin = new Thickness(28, 75, 0, 0);
                 Price.FontFamily = new FontFamily("Times New Roman");
                 Price.FontSize = 16;
 
                 Button Buy = new Button();
+                Buy.Name = "Id_" + IdC[a];
                 Buy.Margin = new Thickness(300, 0, 0, 0);
                 Buy.Height = 35;
                 Buy.Width = 80;
                 Buy.Style = (Style)Buy.FindResource("BuyButtonStyle");
+                Buy.Click += Buy_Click;
+
+                Label FR = new Label();
+                FR.Margin = new Thickness(360, 40, 0, 0);
+                FR.Content = FreeSpaces[a].ToString() + "/" + ReservedSpaces[a].ToString();
+                FR.Height = 25;
+
+                TextBox textBlock = new TextBox();
+                textBlock.Margin = new Thickness(180, 5, 0, 0);
+                textBlock.Height = 20;
+                textBlock.Width = 20;
+                textBlock.Text = rf.ToString();
+                textBlock.LostFocus += TextBlock_LostFocus;
 
                 grid.Children.Add(CinemaName);
                 grid.Children.Add(Price);
-                grid.Children.Add(Time);
                 grid.Children.Add(Buy);
+                grid.Children.Add(FR);
+                grid.Children.Add(textBlock);
             }
 
-            OpenCinema?.Invoke(new ExhibitionsPage());
-            OpenCinema += MainWindow.OpenFilm;
-            OpenCinema(new ExhibitionsPage());
+            if (a != null)
+            {
+                OpenCinema?.Invoke(new SearchPage());
+                OpenCinema += MainWindow.OpenFilm;
+                OpenCinema(new SearchPage());
+            }
+            else
+            {
+                OpenCinema?.Invoke(new ExhibitionsPage());
+                OpenCinema += MainWindow.OpenFilm;
+                OpenCinema(new ExhibitionsPage());
+            }
+            
+        }
+        private void TextBlock_LostFocus(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                TextBox textBlock = (TextBox)sender;
+                rf = Convert.ToInt32(textBlock.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Buy_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            int id = Convert.ToInt32(button.Name.Substring(3));
+            classUpdate.BuyExhibitions(id, rf, User.Name, User.Date);
         }
     }
 }
