@@ -3,5 +3,8 @@ go
 CREATE PROCEDURE DeleteUserById
 @deleteId int AS
 BEGIN
-    delete Users where Id = @deleteId
+	if(@deleteId != 1)
+	begin
+	    delete Users where Id = @deleteId
+	end;
 END;

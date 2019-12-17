@@ -46,7 +46,7 @@ namespace PosterWPF.Sections
             }
             else
             {
-                bdClassAdd.AddUser(EMail.Count + 1, Mail.Text, Name.Text, User.HashPassword(Pass.Password));
+                bdClassAdd.AddUser(EMail.Count + 1, Mail.Text, Name.Text, Pass.Password);
                 MessageBox.Show("Registration was successful");
                 User.Name = Name.Text;
                 EventOpenSettings?.Invoke(new SettingsPage());

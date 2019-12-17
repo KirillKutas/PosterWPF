@@ -53,6 +53,10 @@ create procedure AddMIC
 @newFreeSpaces int,
 @newReservedSpaces int as
 begin
-  insert into MoviesInCinemas(Id,[DateID],[FilmsId],[CinemasId],[Price],[Time],[FreeSpaces],[ReservedSpaces])
+	if(@newFreeSpaces > @newReservedSpaces)
+	begin
+	 insert into MoviesInCinemas(Id,[DateID],[FilmsId],[CinemasId],[Price],[Time],[FreeSpaces],[ReservedSpaces])
   values(dbo.CheckIdMIC(@newId), dbo.SelectIdDate(@newDate), dbo.SelectIdFilm(@newFilmsName), dbo.SelectIdCinema(@newCinemasName), @newPrice, @newTime, @newFreeSpaces, @newReservedSpaces)
-end;
+
+	end;
+ end;

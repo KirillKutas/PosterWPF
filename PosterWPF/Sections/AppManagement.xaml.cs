@@ -90,7 +90,24 @@ namespace PosterWPF.Sections
         {
             try
             {
-                string pathDescription = "../../Description/" + FilmsName.Text + ".txt";
+                for(int a = 0; a < 100000; a++)
+                {
+                    string pathDescription = "../../Description/" + FilmsName.Text + ".txt";
+                    File.WriteAllText(pathDescription, FilmsDescription.Text);
+                    byte[] imagecode = null;
+                    if (imageByte == null)
+                    {
+
+                        ImageToBD(ref imagecode);
+                    }
+                    else
+                    {
+                        imagecode = imageByte;
+                    }
+
+                    bdClassAdd.AddFilm(FilmsBdFrid.Items.Count, FilmsName.Text + a.ToString(), pathDescription, imagecode, FilmsGenre.Text, FilmsCountry.Text, FilmsDuration.Text);
+                }
+               /* string pathDescription = "../../Description/" + FilmsName.Text + ".txt";
                 File.WriteAllText(pathDescription, FilmsDescription.Text);
                 byte[] imagecode = null;
                 if (imageByte == null)
@@ -103,7 +120,7 @@ namespace PosterWPF.Sections
                     imagecode = imageByte;
                 }
 
-                bdClassAdd.AddFilm(FilmsBdFrid.Items.Count, FilmsName.Text, pathDescription, imagecode, FilmsGenre.Text, FilmsCountry.Text, FilmsDuration.Text);
+                bdClassAdd.AddFilm(FilmsBdFrid.Items.Count, FilmsName.Text, pathDescription, imagecode, FilmsGenre.Text, FilmsCountry.Text, FilmsDuration.Text);*/
                 refreshFilmsBdGrid();
             }
             catch (Exception ex)

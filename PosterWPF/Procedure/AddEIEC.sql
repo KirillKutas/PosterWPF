@@ -43,6 +43,11 @@ create procedure AddEIEC
 @newFreeSpaces int,
 @newReservedSpaces int as
 begin
-  insert into ExhibitionsInExhibitionCenters(Id,[DateID],[ExhibitionsId],[ExhibitionCentersId],[Price],[FreeSpaces],[ReservedSpaces])
+	if(@newFreeSpaces > @newReservedSpaces)
+	begin
+	insert into ExhibitionsInExhibitionCenters(Id,[DateID],[ExhibitionsId],[ExhibitionCentersId],[Price],[FreeSpaces],[ReservedSpaces])
   values(dbo.CheckIdEIEC(@newId), dbo.SelectIdDate(@newDate), dbo.SelectIdExhibitions(@newExhibitionsName), dbo.SelectIdExhibitionCenters(@newExhibitionCentersName), @newPrice, @newFreeSpaces, @newReservedSpaces)
-end;
+
+	end;
+
+  end;

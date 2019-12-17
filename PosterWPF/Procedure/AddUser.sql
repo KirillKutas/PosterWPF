@@ -19,8 +19,9 @@ create procedure AddUser
 @newId int, 
 @newMail varchar(100),
 @newName varchar(50),
-@newPassword varchar(50) as
+@newPassword varchar(150) as
 begin
 insert into Users(Id,[E-mail],[Name],[Password])
-values(dbo.CheckIdUsers(@newId),@newMail,@newName,@newPassword) 
+values(dbo.CheckIdUsers(@newId),@newMail,@newName,pwdencrypt(@newPassword)) 
 end;
+

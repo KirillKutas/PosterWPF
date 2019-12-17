@@ -43,7 +43,7 @@ namespace PosterWPF.Sections
             for (int iterator = 0; iterator < Name.Count; iterator++)
             {
                 Grid grid = new Grid();
-                grid.Name = Name[iterator]; // имя потом брать из названия фильма
+                grid.Name = "Id_" + Id[iterator]; // имя потом брать из названия фильма
                 grid.Height = 178;
                 grid.MouseDown += Grid_MouseDown;
 
@@ -109,9 +109,10 @@ namespace PosterWPF.Sections
         private void Grid_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Grid grid = (Grid)sender;
+            int id = Convert.ToInt32(grid.Name.Substring(3));
             for (int a = 0; a < Name.Count; a++)
             {
-                if (Name[a] == grid.Name)
+                if (Id[a] == id)
                 {
                     EventClickGrid?.Invoke(new GridConcerts(Id[a], Name[a], Genre[a], Description[a], Photo[a]));
                     EventClickGrid += MainWindow.EventClickGrid;

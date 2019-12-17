@@ -67,7 +67,7 @@ namespace PosterWPF.Sections
                     MainStack.Children.Add(ImportFromXML);
                 }
 
-                Button PersonalAccount = new Button();
+                /*Button PersonalAccount = new Button();
                 PersonalAccount.Content = "Personal account";
                 PersonalAccount.Background = Brushes.White;
                 PersonalAccount.Style = (Style)PersonalAccount.FindResource("ButtonsStyle1");
@@ -75,7 +75,7 @@ namespace PosterWPF.Sections
                 PersonalAccount.Width = 494;
                 PersonalAccount.BorderThickness = new Thickness(0, 0, 0, 2);
                 PersonalAccount.FontSize = 24;
-                MainStack.Children.Add(PersonalAccount);
+                MainStack.Children.Add(PersonalAccount);*/
 
                 Button LogOut = new Button();
                 LogOut.Content = "Log out";

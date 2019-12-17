@@ -34,11 +34,10 @@ create table Users(
 Id int primary key,
 [E-mail] varchar(100) unique not null,
 [Name] varchar(50) not null,
-[Password] varchar(50) not null
+[Password] varbinary(150) not null
 )
 insert into Users(Id,[E-mail],[Name],[Password])
-values (1,'Admin','Admin','Pa$$word'),
-(2,'User1','User1','User1')
+values (1,'Admin','Admin',pwdencrypt('Pa$$word'))
 
 
 create table Concerts(

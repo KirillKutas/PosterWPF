@@ -43,6 +43,9 @@ create procedure AddCICH
 @newFreeSpaces int,
 @newReservedSpaces int as
 begin
-  insert into ConcertsInConcertHalls(Id,[DateID],[ConcertsId],[ConcertsHallsId],[Price],[FreeSpaces],[ReservedSpaces])
-  values(dbo.CheckIdCICH(@newId), dbo.SelectIdDate(@newDate), dbo.SelectIdConcerts(@newConcertsName), dbo.SelectIdConcertHalls(@newConcertHallsName), @newPrice, @newFreeSpaces, @newReservedSpaces)
-end;
+	if(@newFreeSpaces > @newReservedSpaces)
+	begin
+	insert into ConcertsInConcertHalls(Id,[DateID],[ConcertsId],[ConcertsHallsId],[Price],[FreeSpaces],[ReservedSpaces])
+    values(dbo.CheckIdCICH(@newId), dbo.SelectIdDate(@newDate), dbo.SelectIdConcerts(@newConcertsName), dbo.SelectIdConcertHalls(@newConcertHallsName), @newPrice, @newFreeSpaces, @newReservedSpaces)
+	end;
+  end;

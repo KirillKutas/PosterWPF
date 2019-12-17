@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace PosterWPF
 {
@@ -13,7 +15,7 @@ namespace PosterWPF
         private string connectionString = @"Data Source=.;Initial Catalog=Poster;Integrated Security=True";
 
 
-        public void GetAllUsers(List<string> Mail = null, List<string> Name = null, List<string> Password = null, List<int> Id = null)
+        public void GetAllUsers(List<string> Mail = null, List<string> Name = null, List<byte[]> Password = null, List<int> Id = null)
         {
             string sqlExpression = "SelectAllUsers";
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -34,7 +36,7 @@ namespace PosterWPF
                         if (Name != null)
                             Name.Add(reader.GetString(2));
                         if (Password != null)
-                            Password.Add(reader.GetString(3));
+                            Password.Add(reader.GetValue(3) as byte[]);
                     }
                 }
                 reader.Close();
@@ -1001,6 +1003,45 @@ namespace PosterWPF
                 reader.Close();
             }
         }
+        public bool auth(string Mail, string Password)
+        {
+            try
+            {
+                string sqlExpression = "auth";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
 
+                    SqlParameter Pass = new SqlParameter("@Pass", Password);
+                    SqlParameter mail = new SqlParameter("@Mail", Mail);
+                    SqlParameter Boolpar = new SqlParameter
+                    {
+                        ParameterName = "@out",
+                        SqlDbType = SqlDbType.Int,
+                        Direction = ParameterDirection.Output // параметр выходной
+                    };
+
+                    command.Parameters.Add(Pass);
+                    command.Parameters.Add(mail);
+                    command.Parameters.Add(Boolpar);
+
+                    var result = command.ExecuteNonQuery();
+                    if ((int)Boolpar.Value != 1)
+                    {
+                        return false;
+                        throw new Exception("Invalid user or password");
+                    }
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
     }
 }

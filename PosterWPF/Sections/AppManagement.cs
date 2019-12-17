@@ -121,14 +121,14 @@ namespace PosterWPF.Sections
             List<int> Id = new List<int>();
             List<string> Mail = new List<string>();
             List<string> Name = new List<string>();
-            List<string> Password = new List<string>();
+            List<byte[]> Password = new List<byte[]>();
 
             bdClassGet.GetAllUsers(Mail, Name, Password, Id);
 
             List<UsersClass> usersClasses = new List<UsersClass>();
             for (int iterator = 0; iterator < Id.Count; iterator++)
             {
-                usersClasses.Add(new UsersClass(Id[iterator], Mail[iterator], Name[iterator], Password[iterator]));
+                usersClasses.Add(new UsersClass(Id[iterator], Mail[iterator], Name[iterator], Password[iterator].ToString()));
             }
 
             UsersBdGrid.ItemsSource = usersClasses;

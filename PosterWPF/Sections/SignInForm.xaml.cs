@@ -61,24 +61,12 @@ namespace PosterWPF.Sections
         {
             BdClassGet bdClass = new BdClassGet();
 
-            List<string> Mail = new List<string>();
-            List<string> Name = new List<string>();
-            List<string> Password = new List<string>();
-
-            bdClass.GetAllUsers(Mail, Name, Password);
-            
-            for(int i = 0; i < Mail.Count; i++)
+            if(bdClass.auth(Email.Text, UserPassword.Password))
             {
-                if(Mail[i] == Email.Text)
-                {
-                    if(Password[i] == UserPassword.Password)
-                    {
-                        User.Name = Name[i];
-                        EventOpenSettings?.Invoke(new SettingsPage());
-                        EventOpenSettings += MainWindow.EventClickGrid;
-                        EventOpenSettings(new SettingsPage());
-                    }
-                }
+                User.Name = Email.Text;
+                EventOpenSettings?.Invoke(new SettingsPage());
+                EventOpenSettings += MainWindow.EventClickGrid;
+                EventOpenSettings(new SettingsPage());
             }
         }
 
