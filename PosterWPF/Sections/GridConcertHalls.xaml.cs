@@ -89,31 +89,37 @@ namespace PosterWPF.Sections
                 Price.FontFamily = new FontFamily("Times New Roman");
                 Price.FontSize = 16;
 
-                Button Buy = new Button();
-                Buy.Name = "Id_" + IdC[a];
-                Buy.Margin = new Thickness(300, 0, 0, 0);
-                Buy.Height = 35;
-                Buy.Width = 80;
-                Buy.Style = (Style)Buy.FindResource("BuyButtonStyle");
-                Buy.Click += Buy_Click;
+                if (User.Name != null)
+                {
+                    Button Buy = new Button();
+                    Buy.Name = "Id_" + IdC[a];
+                    Buy.Margin = new Thickness(300, 0, 0, 0);
+                    Buy.Height = 35;
+                    Buy.Width = 80;
+                    Buy.Style = (Style)Buy.FindResource("BuyButtonStyle");
+                    Buy.Click += Buy_Click;
 
-                Label FR = new Label();
-                FR.Margin = new Thickness(360, 40, 0, 0);
-                FR.Content = FreeSpaces[a].ToString() + "/" + ReservedSpaces[a].ToString();
-                FR.Height = 25;
+                    Label FR = new Label();
+                    FR.Margin = new Thickness(360, 40, 0, 0);
+                    FR.Content = FreeSpaces[a].ToString() + "/" + ReservedSpaces[a].ToString();
+                    FR.Height = 25;
 
-                TextBox textBlock = new TextBox();
-                textBlock.Margin = new Thickness(180, 5, 0, 0);
-                textBlock.Height = 20;
-                textBlock.Width = 20;
-                textBlock.Text = rf.ToString();
-                textBlock.LostFocus += TextBlock_LostFocus;
+                    TextBox textBlock = new TextBox();
+                    textBlock.Margin = new Thickness(180, 5, 0, 0);
+                    textBlock.Height = 20;
+                    textBlock.Width = 20;
+                    textBlock.Text = rf.ToString();
+                    textBlock.LostFocus += TextBlock_LostFocus;
+                    grid.Children.Add(Buy);
+                    grid.Children.Add(FR);
+                    grid.Children.Add(textBlock);
+                }
+
+               
 
                 grid.Children.Add(CinemaName);
                 grid.Children.Add(Price);
-                grid.Children.Add(Buy);
-                grid.Children.Add(FR);
-                grid.Children.Add(textBlock);
+
             }
 
             if (a != null)
