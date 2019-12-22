@@ -74,6 +74,9 @@ namespace PosterWPF.Sections
                 CinemaName.FontFamily = new FontFamily("Times New Roman");
                 CinemaName.FontSize = 21;
                 CinemaName.FontWeight = FontWeights.Bold;
+                CinemaName.HorizontalAlignment = HorizontalAlignment.Left;
+                CinemaName.VerticalAlignment = VerticalAlignment.Top;
+                CinemaName.Width = 250;
 
                 Label Time = new Label();
                 Time.Content = TimeC[a]; // из бд
@@ -81,12 +84,18 @@ namespace PosterWPF.Sections
                 Time.FontFamily = new FontFamily("Times New Roman");
                 Time.FontSize = 18;
                 Time.FontWeight = FontWeights.Bold;
+                Time.HorizontalAlignment = HorizontalAlignment.Left;
+                Time.VerticalAlignment = VerticalAlignment.Top;
+                Time.Width = 250;
 
                 Label Price = new Label();
                 Price.Content = PriceC[a]; // из бд
                 Price.Margin = new Thickness(28, 75, 0, 0);
                 Price.FontFamily = new FontFamily("Times New Roman");
                 Price.FontSize = 16;
+                Price.HorizontalAlignment = HorizontalAlignment.Left;
+                Price.VerticalAlignment = VerticalAlignment.Top;
+                Price.Width = 250;
 
                 if (User.Name != null)
                 {

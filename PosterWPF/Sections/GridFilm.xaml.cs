@@ -74,7 +74,7 @@ namespace PosterWPF.Sections
                 border.Height = 4;
 
                 Grid grid = new Grid();
-                grid.Name = "Id_"; // имя потом брать из названия фильма
+                grid.Name = "grid"; // имя потом брать из названия фильма
                 grid.Height = 150;
 
                 Cinemas.Children.Add(border);
@@ -86,12 +86,18 @@ namespace PosterWPF.Sections
                 CinemaName.FontFamily = new FontFamily("Times New Roman");
                 CinemaName.FontSize = 21;
                 CinemaName.FontWeight = FontWeights.Bold;
+                CinemaName.HorizontalAlignment = HorizontalAlignment.Left;
+                CinemaName.VerticalAlignment = VerticalAlignment.Top;
+                CinemaName.Width = 250;
 
                 Label Address = new Label();
                 Address.Content = AddressC[a]; // из бд
                 Address.Margin = new Thickness(28, 45, 0, 0);
                 Address.FontFamily = new FontFamily("Times New Roman");
+                Address.HorizontalAlignment = HorizontalAlignment.Left;
+                Address.VerticalAlignment = VerticalAlignment.Top;
                 Address.FontSize = 16;
+                Address.Width = 250;
 
                 Label Time = new Label();
                 Time.Content = TimeC[a]; // из бд
@@ -99,15 +105,22 @@ namespace PosterWPF.Sections
                 Time.FontFamily = new FontFamily("Times New Roman");
                 Time.FontSize = 18;
                 Time.FontWeight = FontWeights.Bold;
+                Time.HorizontalAlignment = HorizontalAlignment.Left;
+                Time.VerticalAlignment = VerticalAlignment.Top;
+                Time.Width = 250;
 
                 Label Price = new Label();
                 Price.Content = PriceC[a]; // из бд
                 Price.Margin = new Thickness(28, 105, 0, 0);
                 Price.FontFamily = new FontFamily("Times New Roman");
                 Price.FontSize = 16;
+                Price.HorizontalAlignment = HorizontalAlignment.Left;
+                Price.VerticalAlignment = VerticalAlignment.Top;
+                Price.Width = 250;
 
                 if (User.Name != null)
                 {
+                    
                     Button Buy = new Button();
                     Buy.Name = "Id_" + IdC[a];
                     Buy.Margin = new Thickness(300, 0, 0, 0);
@@ -115,6 +128,7 @@ namespace PosterWPF.Sections
                     Buy.Width = 80;
                     Buy.Style = (Style)Buy.FindResource("BuyButtonStyle");
                     Buy.Click += Buy_Click;
+                    //Buy.Click += Buy1_Click;
 
                     Label FR = new Label();
                     FR.Margin = new Thickness(360, 40, 0, 0);
@@ -156,6 +170,13 @@ namespace PosterWPF.Sections
             
         }
 
+        private void Buy_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            int id = Convert.ToInt32(button.Name.Substring(3));
+            classUpdate.BuyFilm(id, rf, User.Name, User.Date);
+        }
+
         private void TextBlock_LostFocus(object sender, RoutedEventArgs e)
         {
             try
@@ -169,11 +190,9 @@ namespace PosterWPF.Sections
             }
         }
 
-        private void Buy_Click(object sender, RoutedEventArgs e)
+        private void Buy1_Click(object sender, RoutedEventArgs e)
         {
-            Button button = (Button)sender;
-            int id = Convert.ToInt32(button.Name.Substring(3));
-            classUpdate.BuyFilm(id, rf, User.Name, User.Date);
+            
         }
     }
 }

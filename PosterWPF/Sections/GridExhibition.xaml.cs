@@ -79,12 +79,18 @@ namespace PosterWPF.Sections
                 CinemaName.FontFamily = new FontFamily("Times New Roman");
                 CinemaName.FontSize = 21;
                 CinemaName.FontWeight = FontWeights.Bold;
+                CinemaName.HorizontalAlignment = HorizontalAlignment.Left;
+                CinemaName.VerticalAlignment = VerticalAlignment.Top;
+                CinemaName.Width = 250;
 
                 Label Address = new Label();
                 Address.Content = AddressC[a]; // из бд
                 Address.Margin = new Thickness(28, 45, 0, 0);
                 Address.FontFamily = new FontFamily("Times New Roman");
                 Address.FontSize = 16;
+                Address.HorizontalAlignment = HorizontalAlignment.Left;
+                Address.VerticalAlignment = VerticalAlignment.Top;
+                Address.Width = 250;
 
                 if (User.Name != null)
                 {

@@ -23,6 +23,8 @@ namespace PosterWPF.Sections
     /// </summary>
     public partial class VkLogin : Window
     {
+        public delegate void ClickGrid(SettingsPage settingsPage);
+        public event ClickGrid EventOpenSettings;
         public VkLogin()
         {
             InitializeComponent();
@@ -58,15 +60,48 @@ namespace PosterWPF.Sections
                     Login = TelephoneOrMail.Text,
                     Password = Pass.Password
                 });
-
+                var account = api.Account.GetProfileInfo();
+                BdClassGet bdClassGet = new BdClassGet();
+                List<string> Mail = new List<string>();
+                bdClassGet.GetAllUsers(Mail: Mail);
+                int count = 0;
+                foreach (var item in Mail)
+                {
+                    if (item == account.FirstName + "VK")
+                    {
+                        count++;
+                    }
+                }
+                if(count == 0)
+                {
+                    BdClassAdd bdClassAdd = new BdClassAdd();
+                    bdClassAdd.AddUser(1, account.FirstName + "VK", "VK", "VK");
+                    User.Name = account.FirstName + "VK";
+                    EventOpenSettings?.Invoke(new SettingsPage());
+                    EventOpenSettings += MainWindow.EventClickGrid;
+                    EventOpenSettings(new SettingsPage());
+                }
+                else
+                {
+                    if(bdClassGet.auth(account.FirstName + "VK", "VK"))
+                    {
+                        User.Name = account.FirstName + "VK";
+                        EventOpenSettings?.Invoke(new SettingsPage());
+                        EventOpenSettings += MainWindow.EventClickGrid;
+                        EventOpenSettings(new SettingsPage());
+                    }
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            var account = api.Account.GetProfileInfo();
-            MessageBox.Show(account.FirstName);
-            Close();
+            finally
+            {
+                Close();
+            }
+           
+            
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
